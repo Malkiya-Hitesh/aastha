@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
+/* ─── Brand Colors (Source of Truth) ─── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  --color-blue: #1061d2;
+  --color-red: #ff5b5b;
+  --color-green: #98eb6b;
+  --color-grey: #edeff0;
+  --color-black: #191b1c;
+  --color-white: #ffffff;
+  --color-blue-light: #e8f0fc;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+  --color-bg: #edeff0; /* Page background   */
+  --color-bg-brand:#1061d2; /* Hero, navbar bg   */
+  --color-bg-card: #ffffff; /* Cards, modals     */
+  --color-bg-dark: #191b1c; /* Footer, dark sec  */
+  --color-bg-muted: #edeff0; /* Alt section bg    */
+  --color-bg-accent: #e8f0fc; /* Hover, info box */
+  --color-bg-success: #98eb6b; /* Success badges    */
+  --color-bg-danger: #ff5b5b; /* Alert, error bg   */
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Text */
+  --color-text: #191b1c; /* Default body text */
+  --color-text-brand:#1061d2; /* Branded headings  */
+  --color-text-muted: #5a5f63; /* Secondary text    */
+  --color-text-hint: #9ca3af; /* Placeholder, hint */
+  --color-text-inverse: #ffffff; /* Text on dark bg   */
+  --color-text-success: #2a5a0a; /* Text on green bg  */
+  --color-text-danger: #ffffff; /* Text on red bg    */
+
+  /* Borders */
+  --color-border: #d1d5db; /* Default border    */
+  --color-border-brand: #1061d2; /* Focus, active     */
+  --color-border-muted: #e5e7eb; /* Subtle divider    */
+
+  /* Interactive */
+  --color-cta: #ff5b5b; /* Primary CTA btn   */
+  --color-cta-hover: #e04444; /* CTA hover state   */
+  --color-link: #1061d2; /* Links             */
+  --color-link-hover: #0a4aab; /* Link hover        */
+
+  /* ─── Spacing (Section Consistency) ─── */
+  --section-px: 1.5rem; 
+  --section-py: 4rem; 
+  --section-px-md: 3rem; 
+  --section-py-md: 5rem; 
+  --section-px-lg: 6rem; 
+  --section-py-lg: 6rem; 
+  --section-max-w: 1200px; 
+
+  /* ─── Typography ─── */ 
+  --font-heading: "Bricolage Grotesque", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;    
+  --font-serif: "DM Serif Display", serif;
+  --font-italic: "Instrument Serif", serif;
+
+  /* ─── Radius ─── */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
 }
