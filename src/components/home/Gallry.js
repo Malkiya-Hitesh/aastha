@@ -22,15 +22,23 @@ export default function Gallery() {
     // const subRef = useRef(null)
 
     const images = [
+        '/image/2.webp',
+        '/image/4.webp', 
         '/image/1.webp',
         '/image/2.webp', 
         '/image/3.webp',
+        '/image/2.webp', 
+        '/image/4.webp',
         '/image/4.webp', 
-        '/image/5.webp',
-        '/image/6.webp', 
-        '/image/7.webp',
-        '/image/8.webp', 
-        '/image/9.webp',
+        '/image/2.webp',
+        '/image/3.webp', 
+        '/image/2.webp',
+        '/image/1.webp', 
+        '/image/3.webp',
+        '/image/4.webp', 
+        '/image/2.webp',
+        '/image/4.webp', 
+        
        
     ]
 
@@ -103,9 +111,9 @@ export default function Gallery() {
                     className="w-full rounded-xl transition-transform duration-300 group-hover:scale-105"
                     priority={originalIndex < 4}
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-end">
-                    <span className="m-3 bg-white text-black px-3 py-1 text-xs sm:text-sm rounded-md opacity-0 group-hover:opacity-100 transition">
-                        Sports Day {src}
+                <div className="absolute inset-0 bg-black/40 opacity-0 opacity-100 transition duration-300 flex items-end">
+                    <span className="m-3 bg-white text-black px-3 py-1 text-xs sm:text-sm rounded-md opacity-0 opacity-100 transition">
+                     
                     </span>
                 </div>
             </div>

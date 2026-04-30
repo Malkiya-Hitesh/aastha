@@ -184,7 +184,10 @@ export default function OverAll() {
                 </div>
 
             </div>
+            {/* <div className=' flex justify-center items-center  bg-amber-50 '>
             <WriteReviewForm />
+
+            </div> */}
         </Section>
     )
 }

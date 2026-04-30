@@ -11,7 +11,7 @@ function Teacher() {
         subject: 'Mathematics',
         experience: '10 years',
           qualification: 'M.Sc. in Mathematics',
-        image: '/image/1.webp',
+        image:"/image/1.webp"
 
     },
     {
@@ -20,7 +20,7 @@ function Teacher() {
         subject: 'Physics',
         experience: '8 years',
         qualification: 'Ph.D. in Physics',
-        image: '/image/2.webp',
+        image: "/image/1.webp"
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ function Teacher() {
         subject: 'Chemistry',
         experience: '6 years',
         qualification: 'M.Sc. in Chemistry',
-        image: '/image/3.webp',
+        image: "/image/1.webp"
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ function Teacher() {
         subject: 'Biology',
         experience: '5 years',
         qualification: 'M.Sc. in Biology',
-        image: '/image/4.webp',
+        image: "/image/1.webp"
     },
     {
         id: 5,
@@ -44,28 +44,28 @@ function Teacher() {
         subject: 'English',
         experience: '7 years',
         qualification: 'M.A. in English',
-        image: '/image/5.webp',
+        image: '/imasge/5.webp',
     },{
         id: 6,
         tname: 'David Wilson',
         subject: 'History',
         experience: '9 years',
         qualification: 'M.A. in History',
-        image: '/image/6.webp',
+        image: "/image/1.webp"
     },{
         id: 7,
         tname: 'Laura Martinez',
         subject: 'Geography',
         experience: '6 years',
         qualification: 'M.A. in Geography',
-        image: '/image/7.webp',
+        image: "/image/1.webp"
     },{
         id: 8,
         tname: 'James Anderson',
         subject: 'Computer Science',
         experience: '10 years',
         qualification: 'M.Sc. in Computer Science',
-        image: '/image/8.webp',
+        image: "/image/1.webp"
     }]
 
   return (
@@ -75,9 +75,11 @@ function Teacher() {
     {
         teachers.map(teacher => (
             <div key={teacher.id} className=' min-w-[250px] bg-white rounded-lg shadow-md p-4 flex-shrink-0 gap-3 flex flex-col '>
-                <Image src={teacher.image} alt={teacher.tname} width={200} height={200} className=' w-full h-48 object-cover rounded-md mb-4' />
+                <Image src={teacher.image} alt={teacher.tname} width={200} height={200} className=' w-full h-48 object-cover rounded-md mb-4 border-2' />
                 <H3 className=' text-lg font-bold  '>{teacher.tname}</H3>
+                <div>
               <Tag variant='green' >{teacher.subject}</Tag>
+              </div>
                 <P className=' text-gray-600  '>{teacher.experience}</P>
                 <P className=' text-gray-600  '>{teacher.qualification}</P>
             </div>

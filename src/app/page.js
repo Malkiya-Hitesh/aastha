@@ -14,6 +14,7 @@ import HeroSection from "@/components/home/HeroSection"
 import Notis from "@/components/home/Notis"
 import Reviws from "@/components/home/Reviws"
 import WhyChoose from "@/components/home/WhyChoose"
+import TeamAasthaAd from "@/components/layout/Custon"
 
 function page() {
   return (
@@ -30,6 +31,7 @@ function page() {
    <Faq />
    <CtaSection />
    <ContactSection />
+   <TeamAasthaAd />
     </main>
   )
 }

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Button from "../ui/Button";
 import H2 from "../ui/H2";
 import P from "../ui/P";
@@ -40,7 +41,7 @@ function FloatingBadge({ emoji, text, className = "" }) {
 // ─── Main Hero ─────────────────────────────────────────────────
 export default function HeroSection() {
   return (
-    <Section variant="brand"id="hero" className=" grid lg:grid-cols-[2fr_1fr] gap-10 lg:gap-20  overflow-hidden">
+    <Section variant="brand"id="hero" className=" grid lg:grid-cols-[1.9fr_1fr] gap-10 lg:gap-10  overflow-hidden">
     
 
       {/* ── Background geometric shapes ── */}
@@ -86,12 +87,12 @@ export default function HeroSection() {
           <div className="flex flex-col gap-3">
             <h1 className="text-[2rem] md:text-[2.6rem]  lg:text-[3.7rem]  xl:text-[4.5rem] font-[var(--font-heading)] font-extrabold  leading-[1.1] tracking-tight text-[var(--color-text-inverse)]"
             >
-              Where Every Student
+              Shree Astha School
               <span
                 className="block"
                 style={{ color: "var(--color-green)" }}
               >
-                Discovers Excellence.
+                Every child is Special
               </span>
             </h1>
 
@@ -140,9 +141,9 @@ export default function HeroSection() {
         </div>
 
         {/* ── RIGHT — Visual card ── */}
-        <div className="hidden lg:flex justify-center items-center">
+        <div className="hidden lg:flex justify-center items-center   rounded-md mb-4">
 
-          {/* Main image / illustration card */}
+      <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
        </div>
      
 

@@ -61,7 +61,7 @@ function Valu() {
         },
     ]
     return (
-        <Section className='flex flex-col gap-8   ' >
+        <Section  variant='white' className='flex flex-col gap-8   ' >
             <div className='grid grid-cols-3 gap-8 justify-center'>
 
                 {val.map((item) => (

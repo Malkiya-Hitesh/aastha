@@ -124,42 +124,16 @@ export default function SchoolJourneySection() {
         </div>
 
         {/* ── RIGHT — Sticky photo + stats ── */}
-        <div className="flex flex-col gap-5 lg:sticky lg:top-8">
+        <div className="flex flex-col gap-5 lg:sticky lg:top-35">
 
          
           <div
             className="w-full aspect-[4/3] rounded-[16px] overflow-hidden border border-[var(--color-border-muted)] relative flex items-center justify-center"
-            style={{ background: 'var(--color-bg-muted)' }}
+            style={{ background: 'var(--color-bg-brand)' }}
           >
-            {/* Replace with real <Image> */}
-            {/* <Image src="/images/school-journey.jpg" alt="School Journey" fill className="object-cover" /> */}
-
-            {/* Placeholder */}
-            <div className="flex flex-col items-center gap-3">
-              <svg width="36" height="36" viewBox="0 0 20 20" fill="none">
-                <rect x="2" y="4" width="16" height="12" rx="2" stroke="var(--color-text-brand)" strokeWidth="1.5" opacity="0.3"/>
-                <circle cx="7" cy="8" r="1.5" fill="var(--color-text-brand)" opacity="0.3"/>
-                <path d="M2 13l4-3 3 2.5 3-4 4 4.5" stroke="var(--color-text-brand)" strokeWidth="1.5" opacity="0.3" strokeLinecap="round"/>
-              </svg>
-              <P size="xs" color="default" className="!opacity-30">
-                school journey photo
-              </P>
-            </div>
-
-            {/* Year badge overlay */}
-            <div className="absolute bottom-4 left-4">
-              <div
-                className="px-3 py-1.5 rounded-[8px] flex items-center gap-2"
-                style={{ background: 'rgba(25,27,28,0.75)', backdropFilter: 'blur(8px)' }}
-              >
-                <svg width="12" height="12" viewBox="0 0 20 20" fill="#98EB6B">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"/>
-                </svg>
-                <span className="font-[var(--font-body)] text-xs font-semibold text-white">
-                  Est. 1998 · 25+ Years
-                </span>
-              </div>
-            </div>
+           
+          <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
+          
           </div>
 
          

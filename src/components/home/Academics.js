@@ -29,7 +29,7 @@ function Highlight({ icon, iconBg, iconColor, title, subtitle }) {
 // ── Stat card on right side ──────────────────────────────────
 function StatCard({ number, label  }) {
   return (
-    <div className="bg-[var(--color-bg-card)] rounded-[16px] p-6 flex flex-col justify-center items-center gap-2 border border-black/[0.05]">
+    <div className="bg-blue-500/10  rounded-[16px] p-6 flex flex-col justify-center items-center gap-2 border border-black/[0.05]">
      
       <span
         className="font-[var(--font-heading)] font-extrabold leading-none"
@@ -48,7 +48,7 @@ function StatCard({ number, label  }) {
 // ── Main Section ─────────────────────────────────────────────
 export default function Academics() {
   return (
-    <Section id="academics" variant="default" className="flex flex-col gap-8">
+    <Section id="academics" variant="white" className="flex flex-col gap-8">
 
      
      
