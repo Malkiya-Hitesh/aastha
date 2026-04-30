@@ -6,24 +6,24 @@ function Second({ year }) {
   const std10 = {
     topper: { name: "Hardik Gabu", pr: 89, img: "/image/6.webp" },
     students: [
-      { name: "Student 2", pr: 85, img: "/image/2.webp" },
-      { name: "Student 3", pr: 84, img: "/image/3.webp" },
-      { name: "Student 4", pr: 83, img: "/image/2.webp" },
-      { name: "Student 5", pr: 82, img: "/image/2.webp" },
-      { name: "Student 6", pr: 81, img: "/image/2.webp" },
-      { name: "Student 7", pr: 80, img: "/image/2.webp" },
+      { name: "Student 2", pr: 85, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 3", pr: 84, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 4", pr: 83, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 5", pr: 82, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 6", pr: 81, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 7", pr: 80, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
     ],
   }
 
   const std12Arts = {
-    topper: { name: "Hardik Gabu", pr: 90, img: "/image/1.webp" },
+    topper: { name: "Hardik Gabu", pr: 90, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
     students: [
-      { name: "Student 2", pr: 88, img: "/image/1.webp" },
-      { name: "Student 3", pr: 86, img: "/image/1.webp" },
-      { name: "Student 4", pr: 84, img: "/image/1.webp" },
-      { name: "Student 5", pr: 83, img: "/image/1.webp" },
-      { name: "Student 6", pr: 82, img: "/image/1.webp" },
-      { name: "Student 7", pr: 80, img: "/image/1.webp" },
+      { name: "Student 2", pr: 88, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 3", pr: 86, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 4", pr: 84, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 5", pr: 83, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 6", pr: 82, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+      { name: "Student 7", pr: 80, img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
     ],
   }
   

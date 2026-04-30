@@ -10,7 +10,7 @@ function Leadership() {
 
                 <div className=' grid grid-cols-[1fr_2fr] gap-8  border-t border-[var(--color-border-brand)] pt-8  items-start'>
                     <div className='w-90 h-100  rounded-3xl'>
-                        <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
+                        <img src="https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp" alt="no" className=" w-full h-full object-cover" />
                     </div>
                     <div>
                         <H2 color='brand' className='my-3' >Kalpesh sir</H2>
@@ -37,7 +37,7 @@ function Leadership() {
                     </div>
 
                     <div className='w-90 h-100  rounded-3xl'>
-                        <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
+                        <img src="https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp" alt="no" className=" w-full h-full object-cover" />
                     </div>
                 </div>
 

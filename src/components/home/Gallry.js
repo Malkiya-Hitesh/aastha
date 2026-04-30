@@ -21,26 +21,24 @@ export default function Gallery() {
     // const containerRef = useRef(null)
     // const subRef = useRef(null)
 
-    const images = [
-        '/image/2.webp',
-        '/image/4.webp', 
-        '/image/1.webp',
-        '/image/2.webp', 
-        '/image/3.webp',
-        '/image/2.webp', 
-        '/image/4.webp',
-        '/image/4.webp', 
-        '/image/2.webp',
-        '/image/3.webp', 
-        '/image/2.webp',
-        '/image/1.webp', 
-        '/image/3.webp',
-        '/image/4.webp', 
-        '/image/2.webp',
-        '/image/4.webp', 
-        
-       
-    ]
+  const images = [
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
+  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
+];
 
 
 //    useLayoutEffect(() => {
@@ -100,7 +98,7 @@ export default function Gallery() {
 //     }, [pathname])
 
     const renderCard = ({ src, originalIndex }) => (
-        <div key={src} className="gallery-card mb-4 sm:mb-5" 
+        <div key={originalIndex} className="gallery-card mb-4 sm:mb-5" 
             >
             <div className="relative group overflow-hidden rounded-xl">
                 <Image

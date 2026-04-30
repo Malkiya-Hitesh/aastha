@@ -5,52 +5,52 @@ import Astudent from './Astudent'
 function Alumni({ sItem, eitem }) {
 
  const alumniData = [
-  { id: 1, name: "Aastha Aastha ", post: " IIT kanpur", img: "/image/1.webp" },
-  { id: 2, name: "Rohit", post: " ias officer", img: "/image/1.webp" },
-  { id: 3, name: "Sneha", post: " IIT Delhi", img: "/image/1.webp" },
-  { id: 4, name: "Vikram", post: " IIT Madras", img: "/image/1.webp" },
-  { id: 5, name: "Priya", post: " IIT Bombay", img: "/image/1.webp" },
-  { id: 6, name: "Arjun", post: " IIT Kanpur", img: "/image/1.webp" },
-  { id: 7, name: "Neha", post: " IIT Indore", img: "/image/1.webp" },
-  { id: 8, name: "Karan", post: " IIT Guwahati", img: "/image/1.webp" },
-  { id: 9, name: "Anjali", post: " IIT Roorkee", img: "/image/1.webp" },
-  { id: 10, name: "Riya", post: " IIT Mandi", img: "/image/1.webp" },
+  { id: 1, name: "Aastha Aastha ", post: " IIT kanpur", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 2, name: "Rohit", post: " ias officer", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 3, name: "Sneha", post: " IIT Delhi", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 4, name: "Vikram", post: " IIT Madras", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 5, name: "Priya", post: " IIT Bombay", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 6, name: "Arjun", post: " IIT Kanpur", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 7, name: "Neha", post: " IIT Indore", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 8, name: "Karan", post: " IIT Guwahati", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 9, name: "Anjali", post: " IIT Roorkee", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
+  { id: 10, name: "Riya", post: " IIT Mandi", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp" },
   {
     id: 11,
     name: "Siddharth",
-    post: " IIT Hyderabad", img: "/image/1.webp"
+    post: " IIT Hyderabad", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },
-  { id: 12, name: "Amit", post: " IIT Varanasi", img: "/image/1.webp"
+  { id: 12, name: "Amit", post: " IIT Varanasi", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 13,
     name: "Sanya",
-    post: " IIT Gandhinagar", img: "/image/1.webp"
+    post: " IIT Gandhinagar", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 14,
     name: "Rahul",
-    post: " IIT Patna", img: "/image/1.webp"
+    post: " IIT Patna", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 15,
     name: "Meera",
-    post: " IIT Ropar", img: "/image/1.webp"
+    post: " IIT Ropar", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 16,
     name: "Aditya",
-    post: " IIT Bhubaneswar", img: "/image/1.webp"
+    post: " IIT Bhubaneswar", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 17,
     name: "Pooja",
-    post: " IIT Jodhpur", img: "/image/1.webp"
+    post: " IIT Jodhpur", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 18,
     name: "Suresh",
-    post: " IIT Palakkad", img: "/image/1.webp"
+    post: " IIT Palakkad", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
-    id: 19, name: "Ananya", post: " IIT Tirupati", img: "/image/1.webp"
+    id: 19, name: "Ananya", post: " IIT Tirupati", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },{
     id: 20,
     name: "Vishal",
-    post: " IIT Goa", img: "/image/1.webp"
+    post: " IIT Goa", img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   }
  ]
 

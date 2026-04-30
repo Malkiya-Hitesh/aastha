@@ -143,7 +143,7 @@ export default function HeroSection() {
         {/* ── RIGHT — Visual card ── */}
         <div className="hidden lg:flex justify-center items-center   rounded-md mb-4">
 
-      <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
+      <img src="https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp" alt="no" className=" w-full h-full object-cover" />
        </div>
      
 

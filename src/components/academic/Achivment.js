@@ -8,52 +8,52 @@ function Achivment() {
         title: "Academic Excellence",
         description: "Consistently ranked among the top schools in the region for academic performance, with a high percentage of students achieving excellent results in board exams and competitive tests.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 2,
         title: "Sports Excellence",
         description: "Outstanding performance in various sports activities, with students winning accolades at regional and national levels.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 3,
         title: "Cultural Achievements",
         description: "Active participation and recognition in cultural events, including music, dance, drama, and art competitions.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 4,
         title: "Community Service",
         description: "Engagement in community service projects, with students contributing to social causes and receiving awards for their efforts.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 5,
         title: "Innovation and Technology",
         description: "Recognition for innovative projects and participation in technology fairs, showcasing students' creativity and problem-solving skills.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 6,
         title: "Environmental Initiatives",
         description: "Awards for environmental conservation efforts, including tree planting drives, waste management projects, and awareness campaigns.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 7,
         title: "Alumni Success",
         description: "Notable achievements of alumni in various fields, including higher education, entrepreneurship, and public service.",
         year: "2023",
-        img: "/image/1.webp"
+        img: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 8,
         title: "Extracurricular Excellence",
         description: "Recognition for excellence in extracurricular activities such as debate, quiz competitions, and leadership roles in student organizations.",
         year: "2023",
-        img:"/image/1.webp"
+        img:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     }
  ]
 

@@ -48,7 +48,7 @@ export default function Navbar() {
       >
    
        
-         <img src='/image/logo.png' alt='hsie' className="  h-[7rem] rounded-md mb-4 " />
+         <img src='https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/logo.png' alt='hsie' className="  h-[7rem] rounded-md mb-4 " />
        
 
   

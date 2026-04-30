@@ -11,7 +11,7 @@ function Teacher() {
         subject: 'Mathematics',
         experience: '10 years',
           qualification: 'M.Sc. in Mathematics',
-        image:"/image/1.webp"
+        image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
 
     },
     {
@@ -20,7 +20,7 @@ function Teacher() {
         subject: 'Physics',
         experience: '8 years',
         qualification: 'Ph.D. in Physics',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 3,
@@ -28,7 +28,7 @@ function Teacher() {
         subject: 'Chemistry',
         experience: '6 years',
         qualification: 'M.Sc. in Chemistry',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 4,
@@ -36,7 +36,7 @@ function Teacher() {
         subject: 'Biology',
         experience: '5 years',
         qualification: 'M.Sc. in Biology',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },
     {
         id: 5,
@@ -44,28 +44,28 @@ function Teacher() {
         subject: 'English',
         experience: '7 years',
         qualification: 'M.A. in English',
-        image: '/imasge/5.webp',
+        image: 'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp',
     },{
         id: 6,
         tname: 'David Wilson',
         subject: 'History',
         experience: '9 years',
         qualification: 'M.A. in History',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 7,
         tname: 'Laura Martinez',
         subject: 'Geography',
         experience: '6 years',
         qualification: 'M.A. in Geography',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     },{
         id: 8,
         tname: 'James Anderson',
         subject: 'Computer Science',
         experience: '10 years',
         qualification: 'M.Sc. in Computer Science',
-        image: "/image/1.webp"
+        image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
     }]
 
   return (

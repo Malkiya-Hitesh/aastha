@@ -132,7 +132,7 @@ export default function SchoolJourneySection() {
             style={{ background: 'var(--color-bg-brand)' }}
           >
            
-          <img src="/image/4.webp" alt="no" className=" w-full h-full object-cover" />
+          <img src="https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp" alt="no" className=" w-full h-full object-cover" />
           
           </div>
 

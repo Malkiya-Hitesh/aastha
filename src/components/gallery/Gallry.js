@@ -12,60 +12,34 @@ function Gallery() {
     ];
 
 
-    const images = [
-        { id: 1, src: "/image/1.webp", categories: ['event'], alt: "Image 1" },
-        { id: 2, src: "/image/4.webp", categories: ['sports'], alt: "Image 2" },
-        { id: 3, src: "/image/2.webp", categories: ['culture'], alt: "Image 3" },
-        { id: 4, src: "/image/1.webp", categories: ['trip'], alt: "Image 4" },
-        { id: 5, src: "/image/2.webp", categories: ['other'], alt: "Image 5" },
-        { id: 6, src: "/image/4.webp", categories: ['event'], alt: "Image 6" },
-        { id: 7, src: "/image/4.webp", categories: ['event'], alt: "Image 7" },
-        { id: 8, src: "/image/3.webp", categories: ['sports'], alt: "Image 8" },
-        { id: 9, src: "/image/1.webp", categories: ['culture'], alt: "Image 9" },
-        { id: 10, src: "/image/3.webp", categories: ['trip'], alt: "Image 10" },
-        {
-            id: 11,
-            src: "/image/2.webp",
-            categories: ['other'],
-            alt: "Image 11"
-        }, {
-            id: 12,
-            src: "/image/3.webp",
-            categories: ['event'],
-            alt: "Image 12"
-        }, {
-            id: 13,
-            src: "/image/4.webp",
-            categories: ['sports'],
-            alt: "Image 13"
-        }, {
-            id: 14,
-            src: "/image/4.webp",
-            categories: ['culture'],
-            alt: "Image 14"
-        },
-        { id: 15, src: "/image/1.webp", categories: ['event'], alt: "Image 15" },
-        { id: 16, src: "/image/2.webp", categories: ['sports'], alt: "Image 16" },
-        { id: 17, src: "/image/4.webp", categories: ['culture'], alt: "Image 17" },
-        { id: 18, src: "/image/2.webp", categories: ['trip'], alt: "Image 18" },
-        { id: 19, src: "/image/3.webp", categories: ['other'], alt: "Image 19" },
-        { id: 20, src: "/image/3.webp", categories: ['event'], alt: "Image 20" },
-        { id: 21, src: "/image/1.webp", categories: ['event'], alt: "Image 21" },
-        { id: 22, src: "/image/4.webp", categories: ['sports'], alt: "Image 22" },
-        { id: 23, src: "/image/2.webp", categories: ['culture'], alt: "Image 23" },
-        { id: 24, src: "/image/4.webp", categories: ['trip'], alt: "Image 24" },
-        {
-            id: 25,
-            src: "/image/3.webp",
-            categories: ['other'],
-            alt: "Image 25"
-        }, {
-            id: 26,
-            src: "/image/4.webp",
-            categories: ['event'],
-            alt: "Image 26"
-        }
-    ];
+const images = [
+  { id: 1, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp", categories: ['event'], alt: "Image 1" },
+  { id: 2, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['sports'], alt: "Image 2" },
+  { id: 3, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['culture'], alt: "Image 3" },
+  { id: 4, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp", categories: ['trip'], alt: "Image 4" },
+  { id: 5, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['other'], alt: "Image 5" },
+  { id: 6, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['event'], alt: "Image 6" },
+  { id: 7, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['event'], alt: "Image 7" },
+  { id: 8, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['sports'], alt: "Image 8" },
+  { id: 9, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp", categories: ['culture'], alt: "Image 9" },
+  { id: 10, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['trip'], alt: "Image 10" },
+  { id: 11, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['other'], alt: "Image 11" },
+  { id: 12, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['event'], alt: "Image 12" },
+  { id: 13, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['sports'], alt: "Image 13" },
+  { id: 14, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['culture'], alt: "Image 14" },
+  { id: 15, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp", categories: ['event'], alt: "Image 15" },
+  { id: 16, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['sports'], alt: "Image 16" },
+  { id: 17, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['culture'], alt: "Image 17" },
+  { id: 18, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['trip'], alt: "Image 18" },
+  { id: 19, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['other'], alt: "Image 19" },
+  { id: 20, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['event'], alt: "Image 20" },
+  { id: 21, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp", categories: ['event'], alt: "Image 21" },
+  { id: 22, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['sports'], alt: "Image 22" },
+  { id: 23, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp", categories: ['culture'], alt: "Image 23" },
+  { id: 24, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['trip'], alt: "Image 24" },
+  { id: 25, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp", categories: ['other'], alt: "Image 25" },
+  { id: 26, src: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp", categories: ['event'], alt: "Image 26" }
+];
 
     return (
         <Section className=' flex flex-col gap-6'>

@@ -8,39 +8,39 @@ function FacitiesC() {
     id: 1,
     name: "Library",
     description: "A well-stocked library with a wide range of books, journals, and digital resources to support academic research and learning.",
-    image:"/image/1.webp"
+    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },
   {  
     id: 2,
     name: "Science Labs",
     description: "State-of-the-art science laboratories equipped with modern instruments and safety measures for hands-on experiments in physics, chemistry, and biology.", 
-    image: "/image/1.webp"
+    image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   }
   ,
   {
     id: 3,
     name: "Sports Complex",
     description: "A modern sports complex with facilities for various indoor and outdoor activities, promoting physical fitness and teamwork.",
-    image:"/image/1.webp"
+    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   }
     ,   
     {
     id: 4,
     name: "Computer Labs",
     description: "Advanced computer labs with high-speed internet and the latest software to enhance digital literacy and coding skills.",
-    image:"/image/1.webp"
+    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   }
     ,{
     id: 5,
     name: "Auditorium",
     description: "A spacious auditorium with excellent acoustics, used for school events, performances, and guest lectures.",   
-    image:"/image/1.webp"
+    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   },
     {
     id: 6,
     name: "Cafeteria",
     description: "A hygienic and comfortable cafeteria offering a variety of nutritious meals and snacks for students and staff.",
-    image: "/image/1.webp"
+    image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
   }
     
    
