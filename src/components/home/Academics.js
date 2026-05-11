@@ -1,8 +1,9 @@
-'use client'
+
 
 import { FaBook, FaBuilding, FaTrophy } from "react-icons/fa"
 import { Button, H2, H3, P, Section, Tag } from "../ui"
 import { RiTeamFill } from "react-icons/ri"
+import { getAcademicInfo } from "@/lib/queries"
 
 
 
@@ -27,10 +28,10 @@ function Highlight({ icon, iconBg, iconColor, title, subtitle }) {
 }
 
 // ── Stat card on right side ──────────────────────────────────
-function StatCard({ number, label  }) {
+function StatCard({ number, label }) {
   return (
     <div className="bg-blue-500/10  rounded-[16px] p-6 flex flex-col justify-center items-center gap-2 border border-black/[0.05]">
-     
+
       <span
         className="font-[var(--font-heading)] font-extrabold leading-none"
         style={{
@@ -46,36 +47,53 @@ function StatCard({ number, label  }) {
 }
 
 // ── Main Section ─────────────────────────────────────────────
-export default function Academics() {
+export default async function Academics() {
+
+  const academics = await getAcademicInfo()
+
+
   return (
     <Section id="academics" variant="white" className="flex flex-col gap-8">
 
-     
-     
-        <H2  className=" text-center " color="default">Academics Overview</H2>
-      
+
+
+      <H2 className=" text-center " color="default">Academics Overview</H2>
+
 
       {/* Two column grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8 items-stretch">
 
-    
-        <div className="rounded-[16px] p-6 flex flex-col gap-8"   style={{ background: 'var(--color-bg-brand)' }}
+
+        <div className="rounded-[16px] p-6 flex flex-col gap-8" style={{ background: 'var(--color-bg-brand)' }}
         >
-        
-            <div className="flex items-center  flex-wrap gap-4">
-             <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> GSEB  </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  CBSE </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Gujarati Medium </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> English Medium  </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Std 1 – 12 </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Science </span>
-                        <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Commerce </span>
+
+          <div className="flex items-center  flex-wrap gap-4">
+
+            {academics.board.map((tag, index) => (
+                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+            ))}
+            {academics.classes.map((tag, index) => (
+                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+            ))}
+            {academics.medium.map((tag, index) => (
+                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+            ))}
+            {academics.medium.map((tag, index) => (
+                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+            ))}
+          
+            {/* <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  CBSE </span>
+            <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Gujarati Medium </span>
+            <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> English Medium  </span>
+            <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Std 1 – 12 </span>
+            <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Science </span>
+            <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Commerce </span> */}
           </div>
 
-        
-          <H3 style={{fontSize: 'clamp(2rem, 2.5vw, 3rem)'}} color="inverse">Academics Overview</H3>
 
-      
+          <H3 style={{ fontSize: 'clamp(2rem, 2.5vw, 3rem)' }} color="inverse">Academics Overview</H3>
+
+
           <P size="md" color="inverse">
             AEK School has been shaping young minds since 1998. We offer GSEB
             and CBSE curriculum in both Gujarati and English medium — from
@@ -121,26 +139,26 @@ export default function Academics() {
         </div>
 
         {/* ── RIGHT — Stats grid ── */}
-        <div className="grid grid-cols-2 gap-4 lg:gap-5  ">  
+        <div className="grid grid-cols-2 gap-4 lg:gap-5  ">
           <StatCard
             number="25+"
             label="Years of Experience"
           />
-        
+
           <StatCard
             number="60+"
             label="Expert Teachers"
-           
+
           />
           <StatCard
             number="1200+"
             label="Students Enrolled"
-            
+
           />
           <StatCard
             number="100%"
             label="Board Pass Rate"
-           
+
           />
         </div>
 

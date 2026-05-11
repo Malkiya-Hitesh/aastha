@@ -1,3 +1,4 @@
+import { getAcademicInfo } from '@/lib/queries'
 import { H2, H3, H4, P, Section, Tag } from '../ui'
 
 // ── Inline SVG Icons ──────────────────────────────────────────
@@ -92,7 +93,11 @@ function StreamCard({ icon, iconBg, iconColor, title, desc, subjects }) {
 }
 
 // ── Main Section ──────────────────────────────────────────────
-export default function AcademicsDetail() {
+export default async function AcademicsDetail() {
+
+  const academicInfo = await getAcademicInfo()
+   
+   
     return (
         <Section id="academics-detail" variant="default" className="flex flex-col gap-8">
 
@@ -112,7 +117,7 @@ export default function AcademicsDetail() {
                         iconBg="#E8F0FC"
                         iconColor="#1061D2"
                         title="Board"
-                        tags={['CBSE', 'GSEB']}
+                        tags={academicInfo.board}
                     />
 
                     <div className="border-t border-[var(--color-border-muted)]" />
@@ -122,7 +127,7 @@ export default function AcademicsDetail() {
                         iconBg="#f0fbe8"
                         iconColor="#4a9e1a"
                         title="Medium of Instruction"
-                        tags={['Gujarati', 'English']}
+                        tags={academicInfo.medium}
                     />
 
                     <div className="border-t border-[var(--color-border-muted)]" />
@@ -132,7 +137,7 @@ export default function AcademicsDetail() {
                         iconBg="#fff7ed"
                         iconColor="#d97706"
                         title="Classes Offered"
-                        tags={['LKG – UKG', 'Std 1 – 10', 'Std 11 – 12 Science', 'Std 11 – 12 Commerce']}
+                        tags={academicInfo.classes}
                     />
 
                     <div className="border-t border-[var(--color-border-muted)]" />
@@ -142,7 +147,7 @@ export default function AcademicsDetail() {
                         iconBg="#fff0f0"
                         iconColor="#FF5B5B"
                         title="School Timings"
-                        tags={['7:30 AM – 2:30 PM', 'Mon – Sat']}
+                        tags={academicInfo.timings}
                     />
 
                 </div>
@@ -154,26 +159,25 @@ export default function AcademicsDetail() {
                         icon={<IconStream />}
                         iconBg="#E8F0FC"
                         iconColor="#1061D2"
-                        title="Science Stream (Std 11–12)"
-                        
-                        subjects={['Physics', 'Chemistry', 'Biology', 'Mathematics', 'English']}
+                    
+                        title={ Object.keys(academicInfo.streams)[0]}
+                        subjects={ Object.values(academicInfo.streams)[0].subjects}
+                       
                     />
 
                     <StreamCard
                         icon={<IconStream />}
                         iconBg="#f0fbe8"
                         iconColor="#4a9e1a"
-                        title="Commerce Stream (Std 11–12)"
-                      
-                        subjects={['Business Studies', 'Accountancy', 'Economics', 'Mathematics', 'English']}
+                       title={ Object.keys(academicInfo.streams)[1]}
+                        subjects={ Object.values(academicInfo.streams)[1].subjects}
                     />
                     <StreamCard
                         icon={<IconStream />}
                         iconBg="#fff7ed"
                         iconColor="#d97706"
-                        title="Arts Stream (Std 11–12)"
-                        
-                        subjects={['History',' Geography', 'Economics', 'Sociology',' Psychology', 'Philosophy']}
+                       title={ Object.keys(academicInfo.streams)[2]}
+                        subjects={ Object.values(academicInfo.streams)[2].subjects}
                     />
 
                 </div>

@@ -1,50 +1,10 @@
 
+import { getFacilities } from '@/lib/queries';
 import { H2, H3, P, Section } from '../ui'
 
-function FacitiesC() {
+async function FacitiesC() {
 
-
-  const facilitie = [  {
-    id: 1,
-    name: "Library",
-    description: "A well-stocked library with a wide range of books, journals, and digital resources to support academic research and learning.",
-    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  },
-  {  
-    id: 2,
-    name: "Science Labs",
-    description: "State-of-the-art science laboratories equipped with modern instruments and safety measures for hands-on experiments in physics, chemistry, and biology.", 
-    image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  }
-  ,
-  {
-    id: 3,
-    name: "Sports Complex",
-    description: "A modern sports complex with facilities for various indoor and outdoor activities, promoting physical fitness and teamwork.",
-    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  }
-    ,   
-    {
-    id: 4,
-    name: "Computer Labs",
-    description: "Advanced computer labs with high-speed internet and the latest software to enhance digital literacy and coding skills.",
-    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  }
-    ,{
-    id: 5,
-    name: "Auditorium",
-    description: "A spacious auditorium with excellent acoustics, used for school events, performances, and guest lectures.",   
-    image:"https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  },
-    {
-    id: 6,
-    name: "Cafeteria",
-    description: "A hygienic and comfortable cafeteria offering a variety of nutritious meals and snacks for students and staff.",
-    image: "https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp"
-  }
-    
-   
-];
+const facilitie = await getFacilities()
 
 
 
@@ -55,8 +15,8 @@ function FacitiesC() {
 <div>
     <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10  overflow-hidden'>
         {facilitie.map((facility) => (
-            <div key={facility.id} className='flex flex-col items-start gap-3  pl-4 pr-8 py-3 rounded-lg bg-blue-500/10 border border-white/15 backdrop-blur-sm  '>
-                <img src={facility.image} alt={facility.name} className='w-full h-40 object-cover border-2 rounded-md' />
+            <div key={facility._id} className='flex flex-col items-start gap-3  pl-4 pr-8 py-3 rounded-lg bg-blue-500/10 border border-white/15 backdrop-blur-sm  '>
+                <img src={facility.imageUrl} alt={facility.alt} className='w-full h-40 object-cover border-2 rounded-md' />
                 <H3  color='brand' className="text-center  ">{facility.name}</H3>
                 <P color="muted" size="md">{facility.description}</P>
             </div>

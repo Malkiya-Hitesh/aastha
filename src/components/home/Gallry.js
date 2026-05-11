@@ -1,9 +1,10 @@
-﻿'use client'
+﻿
 
+import { getGalleryImages } from "@/lib/queries";
 import { H2, Section } from "../ui"
 
 // import React, { useLayoutEffect, useRef } from 'react'
-import Image from 'next/image'
+// import Image from 'next/image'
 // import Section from '@/app/ui/Section'
 // import { H2 } from '@/app/ui/H2'
 // import { P } from '@/app/ui/P'
@@ -16,29 +17,11 @@ import Image from 'next/image'
 
 
 
-export default function Gallery() {
+export default async function Gallery() {
     // let pathname = usePathname()
     // const containerRef = useRef(null)
     // const subRef = useRef(null)
-
-  const images = [
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/1.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/3.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/2.webp',
-  'https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/4.webp',
-];
+  const img = await getGalleryImages()
 
 
 //    useLayoutEffect(() => {
@@ -101,13 +84,13 @@ export default function Gallery() {
         <div key={originalIndex} className="gallery-card mb-4 sm:mb-5" 
             >
             <div className="relative group overflow-hidden rounded-xl">
-                <Image
+                <img
                     src={src}
                     alt={`Gallery image ${originalIndex + 1}`}
                     width={500}
                     height={500}
                     className="w-full rounded-xl transition-transform duration-300 group-hover:scale-105"
-                    priority={originalIndex < 4}
+                
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 opacity-100 transition duration-300 flex items-end">
                     <span className="m-3 bg-white text-black px-3 py-1 text-xs sm:text-sm rounded-md opacity-0 opacity-100 transition">
@@ -127,8 +110,8 @@ export default function Gallery() {
 
 
             <div className=" columns-1  sm:columns-2 md:columns-3  lg:columns-4 gap-4">
-                {images.map((src, index) => (
-                    renderCard({ src, originalIndex: index })
+                {img.map((src, index) => (
+                    renderCard({ src: src.imageUrl, originalIndex: index })
                 ))}
             </div>
         </Section>

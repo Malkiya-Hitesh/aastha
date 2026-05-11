@@ -1,55 +1,19 @@
-'use client'
 
-import { useState } from 'react'
 import { H2, H3, H4, P, Section } from '../ui'
 import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoCall } from 'react-icons/io5'
 import { IoIosMail } from 'react-icons/io'
+import { getContactInfo } from '@/lib/queries'
 
-// ── Contact info data ─────────────────────────────────────────
-const contactItems = [
-  {
-    id: 1,
-    label: 'Address',
-    value: '123, AEK School Road, Rajkot, Gujarat – 360001',
-    iconBg: '#E8F0FC',
-    iconColor: '#1061D2',
-    icon: (<FaMapMarkerAlt />)
+// ── Contact info data   ─────────────────────────────────────────
 
-  },
-  {
-    id: 2,
-    label: 'Phone',
-    value: '+91 98765 43210',
-    iconBg: '#f0fbe8',
-    iconColor: '#4a9e1a',
-    icon: (<IoCall />
-
-    ),
-  },
-  {
-    id: 3,
-    label: 'Email',
-    value: 'info@aekschool.edu.in',
-    iconBg: '#fff7ed',
-    iconColor: '#d97706',
-    icon: (<IoIosMail />
-
-    ),
-  },
-  {
-    id: 4,
-    label: 'School Timings',
-    value: 'Mon – Fri  ·  8:00 AM to 3:00 PM',
-    iconBg: '#fff0f0',
-    iconColor: '#FF5B5B',
-    icon: (<FaClock />
-),
-  },
-]
 
 // ── Info Card ─────────────────────────────────────────────────
 function InfoCard({ label, value, iconBg, iconColor, icon }) {
+
+
+
+
   return (
     <div className="flex items-start gap-4 p-4 rounded-[12px] bg-[var(--color-bg-card)] border border-[var(--color-border-muted)]">
       <div
@@ -104,40 +68,74 @@ function FormField({ label, type = 'text', placeholder, value, onChange, rows })
 }
 
 // ── Main Section ──────────────────────────────────────────────
-export default function ContactSection() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
-  const [sent, setSent] = useState(false)
+export default async function ContactSection() {
 
-  const set = (field) => (e) => setForm((p) => ({ ...p, [field]: e.target.value }))
+  const contactInfo = await getContactInfo()
+ 
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
 
-    setSent(true)
-  }
+  const contactItems = [
+    {
+      id: 1,
+      label: 'Address',
+      value: contactInfo.address || '123 Main St, Anytown, USA',
+      iconBg: '#E8F0FC',
+      iconColor: '#1061D2',
+      icon: (<FaMapMarkerAlt />)
 
+    },
+    {
+      id: 2,
+      label: 'Phone',
+      value: contactInfo.phone[0] || '+91 98765 43210',
+      iconBg: '#f0fbe8',
+      iconColor: '#4a9e1a',
+      icon: (<IoCall />
+
+      ),
+    },
+    {
+      id: 3,
+      label: 'Email',
+      value: contactInfo.email || 'info@aekschool.edu.in',
+      iconBg: '#fff7ed',
+      iconColor: '#d97706',
+      icon: (<IoIosMail />
+
+      ),
+    },
+    {
+      id: 4,
+      label: 'School Timings',
+      value: contactInfo.timings || 'Mon-Fri: 8am - 3pm',
+      iconBg: '#fff0f0',
+      iconColor: '#FF5B5B',
+      icon: (<FaClock />
+      ),
+    },
+  ]
   return (
     <Section id="contact" variant="default" className="flex flex-col gap-8">
 
-  
-     <H2 color="default" className="text-center">
-        Get in Touch
-     </H2>
 
-     
+      <H2 color="default" className="text-center">
+        Get in Touch
+      </H2>
+
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-start">
 
-  
+
         <div className="flex flex-col gap-3">
           {contactItems.map((item) => (
             <InfoCard key={item.id} {...item} />
           ))}
 
-         
-          
+
+
         </div>
 
-       
+
         <div
           className="rounded-[16px] p-6 flex flex-col gap-5"
           style={{ background: 'var(--color-bg-dark)' }}
@@ -150,8 +148,8 @@ export default function ContactSection() {
             </P>
           </div>
 
-          {sent ? (
-            /* ── Success state ── */
+          {/* {sent ? (
+         
             <div className="flex flex-col items-center justify-center gap-4 py-10">
               <div
                 className="w-14 h-14 rounded-full flex items-center justify-center"
@@ -174,9 +172,9 @@ export default function ContactSection() {
               </button>
             </div>
           ) : (
-            /* ── Form fields ── */
+           
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-              {/* Name + Phone row */}
+   
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField
                   label="Full Name"
@@ -209,14 +207,14 @@ export default function ContactSection() {
                 rows={4}
               />
 
-              {/* Submit */}
+      
               <button
                 type="submit"
                 className="  w-full h-12 rounded-[9px] mt-1 font-[var(--font-body)] font-semibold text-sm text-white   bg-[var(--color-blue)] hover:opacity-90   transition-opacity duration-150  focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] focus:ring-offset-2 "  >
                 Send Message →
               </button>
             </form>
-          )}
+          )} */}
         </div>
 
       </div>

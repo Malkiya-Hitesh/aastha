@@ -60,8 +60,7 @@ function RatingOverview({ reviews }) {
 
                             {/* "5 ★" label */}
                             <div className="flex items-center gap-1 min-w-[34px]">
-                                <span className="font-[var(--font-body)] font-semibold text-xs"
-                                    style={{ color: 'var(--color-text)' }}>
+                                <span className="font-[var(--font-body)] font-semibold text-xs"  style={{ color: 'var(--color-text)' }}>
                                     {star}
                                 </span>
                                 <svg width="11" height="11" viewBox="0 0 20 20" fill="#F59E0B">
@@ -217,13 +216,7 @@ export default function Reviews() {
   {/* Link */}
   <Link
     href="/reviews"
-    className="
-      inline-flex items-center gap-1.5
-      font-[var(--font-body)] text-xs font-semibold
-      px-4 py-2 rounded-[7px]
-      bg-[var(--color-bg-brand)] text-[var(--color-text-inverse)]
-      hover:opacity-85 transition-opacity duration-150
-    "
+    className="  inline-flex items-center gap-1.5  font-[var(--font-body)] text-xs font-semibold    px-4 py-2 rounded-[7px]  bg-[var(--color-bg-brand)] text-[var(--color-text-inverse)]    hover:opacity-85 transition-opacity duration-150  "
   >
     Read More
     <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
