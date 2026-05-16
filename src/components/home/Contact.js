@@ -78,7 +78,7 @@ export default async function ContactSection() {
     {
       id: 1,
       label: 'Address',
-      value: contactInfo.address || '123 Main St, Anytown, USA',
+      value: contactInfo.address || '123nytown, USA',
       iconBg: '#E8F0FC',
       iconColor: '#1061D2',
       icon: (<FaMapMarkerAlt />)

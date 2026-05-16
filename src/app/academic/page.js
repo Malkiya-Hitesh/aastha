@@ -13,11 +13,11 @@ function page() {
     <main>
       <Hero />
       <Academics />
-      {/* <Achivment />
+      <Achivment />
       <Teacher />
+      <Aprocess />
       <RequiredDoc />
-      <Aprocess /> */}
-<AdmissionForm />
+      <AdmissionForm />
     </main>
   )
 }

@@ -11,18 +11,6 @@ import { useState } from 'react'
 
 
 // ── Tag color map ─────────────────────────────────────────────
-const tagVariantMap = {
-
-  Admissions : 'blue',
-
-  General:    'ghost',
-
-  ACTIVITIES: 'green',
-
-  ACTIVITIES: 'green',
-
-  SAFETY:     'red',
-}
 
 // ── Single FAQ Item ───────────────────────────────────────────
 function FaqItem({ answer , question , tag ,isOpen, onToggle }) {
@@ -45,7 +33,7 @@ function FaqItem({ answer , question , tag ,isOpen, onToggle }) {
       >
         {/* Left — tag + question */}
         <div className="flex flex-col gap-2 flex-1 min-w-0">
-          <Tag variant={tagVariantMap[tag] ?? 'ghost'} className="w-fit">
+          <Tag variant={'blue'} className="w-fit">
             {tag}
           </Tag>
           <P

@@ -10,6 +10,7 @@ const links = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Academics', href: '/academic' },
+  { label: 'Result', href: '/result' },
   { label: 'Gallery', href: '/gallerys' },
   { label: 'Reviews', href: '/reviews' },
   { label: 'Contact', href: '/contact' },
@@ -81,7 +82,9 @@ export default function Navbar() {
 
         </div>
         <div className="   flex md:hidden lg:flex items-center justify-end gap-2">
+          <Link href='/academic#admission' >
           <Tag className="hidden xl:inline-flex">Admissions Open</Tag>
+          </Link>
         </div>
  <div className='md:hidden flex items-center justify-center md:'>
   <Button variant="ghost" onClick={() => setOpen(!open)} className="absolute top-4 right-4">
@@ -124,10 +127,11 @@ export default function Navbar() {
 
           {/* Mobile CTA */}
           <div className="pt-3 border-t border-[var(--color-border-muted)] mt-2 flex flex-col gap-2">
-            
-            <Button as={Link} href="/admissions" variant="primary" size="md" className="w-full justify-center">
+          
+            <Button as="a" href="/academic#admission" variant="primary" size="md" className="w-full justify-center">
               Apply for Admission →
             </Button>
+           
             <a
               href="tel:+916354771871"
               className="flex items-center justify-center gap-2 py-2.5 rounded-[9px] font-[var(--font-body)] text-sm font-semibold border border-[var(--color-border-muted)]"

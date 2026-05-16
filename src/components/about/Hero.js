@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, H2, P, Section } from '../ui'
+import Link from 'next/link'
 
 function Hero() {
     return (
@@ -10,8 +11,12 @@ function Hero() {
                     Integrity, innovation, and customer satisfaction are at the core of everything we do. We strive to create a positive impact through our work and are committed to continuous improvement and growth.
                 </P>
                 <div className=' flex   gap-8  '>
-                    <Button variant='primary' >  read more</Button>
-                    <Button variant='secondary' >  read more</Button>
+                    <Link href="/">
+                    <Button variant='primary' >  Home</Button>
+                    </Link>
+                    <Link href='/academic'>
+                        <Button variant='secondary' >  Academics</Button>
+                    </Link>
                 </div>
             </div>
 

@@ -63,3 +63,29 @@ export const getTeachers = () =>
     "imageUrl": image.asset->url,
     "alt": image.alt
   }`)
+
+
+  export const getSocialMedia = () =>
+  sanityFetch(`*[_type == "socialMedia"][0]`)
+
+
+
+
+
+
+
+
+
+  // Badha results — year wise group
+export const getResults = () =>
+  sanityFetch(`*[_type == "result"] | order(year desc, class asc) {
+    _id, year, class,
+    totalStudents, passStudents, passRate,
+    distinction, firstClass,
+    "posterUrl": poster.asset->url,
+    "posterAlt": poster.alt,
+    topStudents[] {
+      rank, name, percentage,
+      "photoUrl": photo.asset->url
+    }
+  }`)

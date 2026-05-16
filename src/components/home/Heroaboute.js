@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, H2, P, Section, } from '../ui'
+import Link from 'next/link'
 
 function Heroaboute() {
     return (
@@ -54,8 +55,9 @@ function Heroaboute() {
                     </div>
 
 
-
+<Link href="/about">
                     <Button className='mt-4' variant="primary" size="md">Learn More</Button>
+                    </Link>
                 </div>
             </div>
         </Section>

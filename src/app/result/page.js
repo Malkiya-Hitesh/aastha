@@ -1,9 +1,11 @@
 import Main from '@/components/result/Main'
+import { getResults } from '@/lib/queries'
 import React from 'react'
 
-function page() {
+async function page() {
+   const results = await getResults()
   return (
-   <Main />
+   <Main results={results} />
   )
 }
 

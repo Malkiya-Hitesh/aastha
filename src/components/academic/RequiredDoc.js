@@ -68,7 +68,7 @@ function RequiredDoc() {
 
 
     return (
-        <Section id="notis" variant='white' className="  flex flex-col   gap-6 lg:gap-10 ">
+        <Section id="notis"  className="  flex flex-col   gap-6 lg:gap-10 ">
             <H2 className='text-center' color="brand">
                 Required Documents
             </H2>

@@ -82,7 +82,7 @@ export default function CtaSection() {
           <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
             <Button
               as={Link}
-              href="/admissions"
+              href="/academic#admission"
               variant="secondary"
               size="lg"
             >

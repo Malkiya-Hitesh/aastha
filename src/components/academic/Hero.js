@@ -12,8 +12,8 @@ function Hero() {
                     in both Gujarati and English medium, nurturing every student to reach their highest potential.
                 </P>
                 <div className=' flex   gap-8  '>
-                    <Button variant='primary' >Explore Admissions</Button>
-                    <Button variant='secondary' >Learn More</Button>
+                    <Button  as="a" href="/admissions" variant='primary' >Explore Admissions</Button>
+                    <Button  as="a" href="/" variant='secondary' >Home</Button>
                 </div>
             </div>
 

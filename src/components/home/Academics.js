@@ -59,6 +59,7 @@ export default async function Academics() {
   const academics = await getAcademicInfo()
 
 
+
   return (
     <Section id="academics" variant="white" className="flex flex-col gap-8">
 
@@ -163,7 +164,7 @@ export default async function Academics() {
             variant="white"
             size="md"
             as="a"
-            href="/academics"
+            href="/academic"
             className="w-fit mt-1"
           >
             Explore Academics →
@@ -172,10 +173,10 @@ export default async function Academics() {
 
         {/* ── RIGHT — Stats grid ── */}
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
-          <StatCard number="25+" label="Years of Experience" />
-          <StatCard number="60+" label="Expert Teachers" />
-          <StatCard number="1200+" label="Students Enrolled" />
-          <StatCard number="100%" label="Board Pass Rate" />
+          <StatCard number={`${academics.yearsOfExperience}+`} label="Years of Experience" />
+          <StatCard number={`${academics.totalTeachers}+`} label="Expert Teachers" />
+          <StatCard number={`${academics.studentsEnrolled}+`} label="Students Enrolled" />
+          <StatCard number={`${academics.boardPassRate}%`} label="Board Pass Rate" />
         </div>
 
       </div>

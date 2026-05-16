@@ -16,19 +16,10 @@ async function Leadership() {
                 {leaders.map((leader, index) => (
                     <div
                         key={index}
-                        className={`
-              grid
-              grid-cols-1
-             ${index % 2 === 0 ? ' lg:grid-cols-[1fr_2fr]': 'lg:grid-cols-[2fr_1fr]'}
-              gap-5 md:gap-8
-              border-t border-[var(--color-border-brand)]
-              pt-6 md:pt-8
-              items-start
-            `}
+                        className={`  grid  grid-cols-1  ${index % 2 === 0 ? ' lg:grid-cols-[1fr_2fr]' : 'lg:grid-cols-[2fr_1fr]'}  gap-5 md:gap-8 border-t border-[var(--color-border-brand)]  pt-6 md:pt-8  items-start  `}
                     >
                         {/* Image */}
-                        <div className={` w-full   h-56 sm:h-64 md:h-80   rounded-2xl overflow-hidden   md:${index % 2 === 0 ? 'order-first' : 'order-last'}
-            `}>
+                        <div className={` w-full   h-56 sm:h-64 md:h-80   rounded-2xl overflow-hidden   ${index % 2 === 0 ? 'lg:order-first' : 'lg:order-last'}   `}>
                             <img
                                 src={leader.imageUrl}
                                 alt={leader.name}

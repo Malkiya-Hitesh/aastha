@@ -94,7 +94,7 @@ const processSteps = [
   },
 ]
   return (
-   <Section className=' flex flex-col gap-10 ' >
+   <Section variant='white'  className=' flex flex-col gap-10 '  >
  <H2 className=' text-center ' >Admission Process</H2>
   <div className=' flex flex-col gap-5  items-center'>
      <div className="flex flex-col">
