@@ -13,10 +13,13 @@ async function Achivment() {
 
     <div className=" overflow-x-auto overflow-y-hidden flex gap-5 lg:gap-10  py-5">
         {achievements.map((achievement) => (
-            <div key={achievement._id} className="flex-shrink-0  w-80 bg-blue-500/10 border border-white/15 backdrop-blur-sm rounded-lg p-4">
+            <div key={achievement._id} className=" snap-start flex-shrink-0   w-[17rem] max-[360px]:w-[15rem] sm:w-75 md:w-82  bg-blue-500/10    border border-white/15    backdrop-blur-sm   rounded-xl  p-3 sm:p-4   flex flex-col gap-2 sm:gap-3">
                 <img src={achievement.imageUrl} alt={achievement.title} className="w-full h-40 object-cover border-2   rounded-md mb-4 " />
                 <H3   color="brand"  className="py-4">{achievement.title}</H3>
+                <div>
+
                  <Tag variant="red" className="mb-2">{achievement.year}</Tag>
+                 </div>
                 <P size="md">{achievement.description}</P>
             </div>
         ))}

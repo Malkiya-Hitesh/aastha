@@ -11,8 +11,8 @@ const roles = ['Student', 'Parent', 'Alumni', 'Teacher']
 
 const roleColors = {
   Student: 'blue',
-  Parent:  'ghost',
-  Alumni:  'dark',
+  Parent: 'ghost',
+  Alumni: 'dark',
   Teacher: 'green',
 }
 
@@ -29,9 +29,12 @@ const starLabels = {
 function Field({ label, required, error, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="flex items-center gap-1 font-[var(--font-body)] text-xs font-semibold uppercase tracking-wider"
+      <label className="flex items-center gap-1  tracking-wider"
         style={{ color: 'var(--color-text-muted)' }}>
-        {label}
+        <P size="md" color='dark' >
+          {label}
+        </P>
+
         {required && <span style={{ color: 'var(--color-red)' }}>*</span>}
       </label>
       {children}
@@ -53,15 +56,7 @@ function Input({ value, onChange, placeholder, type = 'text', error }) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`
-        w-full h-11 px-4 rounded-[9px]
-        font-[var(--font-body)] text-sm
-        bg-[var(--color-bg-muted)]
-        border transition-all duration-150
-        placeholder:text-[var(--color-text-hint)]
-        text-[var(--color-text)]
-        focus:outline-none focus:bg-[var(--color-bg-card)]
-        focus:border-[var(--color-border-brand)]
+      className={`  w-full h-11 px-4 rounded-[9px]  transition-all duration-150  placeholder:text-[var(--color-text-hint)]  text-[var(--color-text)]  outline-none bg-[var(--color-bg-card)]  border-[var(--color-border-brand)]
         ${error
           ? 'border-[var(--color-red)]'
           : 'border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)]'
@@ -117,14 +112,14 @@ function StarRater({ value, onChange }) {
 // ── Main Form Component ───────────────────────────────────────
 export default function WriteReviewForm() {
   const [form, setForm] = useState({
-    name:    '',
-    role:    '',
-    email:   '',
-    rating:  0,
-    title:   '',
+    name: '',
+    role: '',
+    email: '',
+    rating: 0,
+    title: '',
     content: '',
   })
-  const [errors, setErrors]   = useState({})
+  const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
 
   const set = (field) => (e) =>
@@ -136,12 +131,12 @@ export default function WriteReviewForm() {
   // ── Validation ──────────────────────────────────────────────
   const validate = () => {
     const e = {}
-    if (!form.name.trim())           e.name    = 'Name is required'
-    if (!form.role)                  e.role    = 'Please select your role'
-    if (!form.email.trim())          e.email   = 'Email is required'
+    if (!form.name.trim()) e.name = 'Name is required'
+    if (!form.role) e.role = 'Please select your role'
+    if (!form.email.trim()) e.email = 'Email is required'
     else if (!/\S+@\S+\.\S+/.test(form.email)) e.email = 'Enter a valid email'
-    if (form.rating === 0)           e.rating  = 'Please select a rating'
-    if (!form.title.trim())          e.title   = 'Review title is required'
+    if (form.rating === 0) e.rating = 'Please select a rating'
+    if (!form.title.trim()) e.title = 'Review title is required'
     if (form.content.trim().length < 20) e.content = 'Write at least 20 characters'
     return e
   }
@@ -183,7 +178,7 @@ export default function WriteReviewForm() {
           {/* Preview card */}
           <div className="w-full text-left p-5 rounded-[14px] bg-[var(--color-bg-card)] border border-[var(--color-border-muted)] flex flex-col gap-3">
             <div className="flex items-center gap-0.5">
-              {[1,2,3,4,5].map((s) => (
+              {[1, 2, 3, 4, 5].map((s) => (
                 <svg key={s} width="14" height="14" viewBox="0 0 20 20"
                   fill={s <= form.rating ? '#F59E0B' : 'none'}
                   stroke={s <= form.rating ? '#F59E0B' : '#d1d5db'}
@@ -221,24 +216,16 @@ export default function WriteReviewForm() {
 
   // ── Form ─────────────────────────────────────────────────────
   return (
-    <Section id="write-review" variant="default" className="flex flex-col gap-8">
+    <Section id="write-review" variant="white" className="flex flex-col gap-8 items-center">
 
-      {/* Header */}
-      <div className="flex flex-col gap-2">
-        <p className="font-[var(--font-body)] font-semibold text-[0.6875rem] tracking-[0.12em] uppercase"
-          style={{ color: 'var(--color-text-brand)' }}>
-          Share Your Experience
-        </p>
+    
         <H3 color="default">Write a Review</H3>
-        <P size="md" color="default">
-          Your feedback helps other families make the right choice for their child.
-        </P>
-      </div>
+     
 
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="max-w-2xl flex flex-col gap-6"
+        className="max-w-2xl flex flex-col gap-6 w-full bg-[var(--color-bg-muted)]      p-4 sm:p-6 md:p-8  lg:p-10  rounded-3xl "
       >
 
         {/* Name + Role row */}
@@ -263,7 +250,7 @@ export default function WriteReviewForm() {
           </Field>
         </div>
 
-        {/* Role selector */}
+        
         <Field label="You are a" required error={errors.role}>
           <div className="flex flex-wrap gap-2">
             {roles.map((r) => (
@@ -276,7 +263,7 @@ export default function WriteReviewForm() {
                   transition-all duration-150 focus:outline-none
                   ${form.role === r
                     ? 'bg-[var(--color-bg-brand)] text-white border-[var(--color-bg-brand)]'
-                    : 'bg-[var(--color-bg-muted)] text-[var(--color-text-muted)] border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)] hover:text-[var(--color-text-brand)]'
+                    : 'bg-[var(--color-bg-card)] text-[var(--color-text-muted)] border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)] hover:text-[var(--color-text-brand)]'
                   }
                 `}
               >
@@ -292,7 +279,7 @@ export default function WriteReviewForm() {
           )}
         </Field>
 
-        {/* Star rating */}
+        
         <Field label="Your Rating" required error={errors.rating}>
           <StarRater
             value={form.rating}
@@ -306,15 +293,8 @@ export default function WriteReviewForm() {
           )}
         </Field>
 
-        {/* Review title */}
-        <Field label="Review Title" required error={errors.title}>
-          <Input
-            value={form.title}
-            onChange={set('title')}
-            placeholder="Summarize your experience in one line"
-            error={errors.title}
-          />
-        </Field>
+       
+        
 
         {/* Review content */}
         <Field label="Your Review" required error={errors.content}>
@@ -324,15 +304,14 @@ export default function WriteReviewForm() {
               value={form.content}
               onChange={set('content')}
               placeholder="Share your experience at AEK School — what did you like most? How has it helped you or your child?"
-              className={`
-                w-full px-4 py-3 rounded-[9px] resize-none
-                font-[var(--font-body)] text-sm
-                bg-[var(--color-bg-muted)]
-                border transition-all duration-150
+              className={`  w-full px-4 py-3 rounded-[9px] resize-none
+               ] text-sm
+                bg-[var(--color-bg-card)]  border-2  border-[#1061d2]
+                transition-all duration-150
                 placeholder:text-[var(--color-text-hint)]
                 text-[var(--color-text)]
-                focus:outline-none focus:bg-[var(--color-bg-card)]
-                focus:border-[var(--color-border-brand)]
+                outline-none focus:bg-[var(--color-bg-card)]
+              
                 ${errors.content
                   ? 'border-[var(--color-red)]'
                   : 'border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)]'
@@ -349,12 +328,12 @@ export default function WriteReviewForm() {
           </div>
         </Field>
 
-        {/* Disclaimer */}
+
         <P size="xs" color="default" className="!opacity-40">
           Your email will not be published. Reviews are moderated before going live.
         </P>
 
-        {/* Submit */}
+   
         <button
           type="submit"
           className="

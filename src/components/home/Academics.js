@@ -30,18 +30,25 @@ function Highlight({ icon, iconBg, iconColor, title, subtitle }) {
 // ── Stat card on right side ──────────────────────────────────
 function StatCard({ number, label }) {
   return (
-    <div className="bg-blue-500/10  rounded-[16px] p-6 flex flex-col justify-center items-center gap-2 border border-black/[0.05]">
-
+    <div className="
+      bg-blue-500/10 rounded-xl sm:rounded-2xl
+      p-3 sm:p-4 md:p-6
+      flex flex-col justify-center items-center gap-1 sm:gap-2
+      border border-black/[0.05]
+    ">
       <span
-        className="font-[var(--font-heading)] font-extrabold leading-none"
-        style={{
-          fontSize: 'clamp(2rem, 3.5vw, 2.75rem)',
-          color: 'var(--color-text-brand)',
-        }}
+        className="font-[var(--font-heading)] font-extrabold leading-none text-[var(--color-text-brand)]"
+        style={{ fontSize: 'clamp(1.375rem, 5vw, 2.75rem)' }}
       >
         {number}
       </span>
-      <P size="lg" color="default">{label}</P>
+      <P
+        size="sm"
+        color="default"
+        className="text-center max-[360px]:text-[0.625rem] sm:text-sm md:text-base"
+      >
+        {label}
+      </P>
     </div>
   )
 }
@@ -61,27 +68,52 @@ export default async function Academics() {
 
 
       {/* Two column grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-8 items-stretch">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-8 items-stretch">
 
 
         <div className="rounded-[16px] p-6 flex flex-col gap-8" style={{ background: 'var(--color-bg-brand)' }}
         >
 
-          <div className="flex items-center  flex-wrap gap-4">
+          <div className="flex items-center flex-wrap gap-2 sm:gap-3">
 
             {academics.board.map((tag, index) => (
-                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+              <span key={index} className="
+      font-[500]
+      text-[11px] max-[360px]:text-[10px] sm:text-[13px] md:text-[15px]
+      px-3 max-[360px]:px-2.5 sm:px-5 md:px-7
+      py-1 sm:py-1.5
+      rounded-full
+      bg-[var(--color-bg-success)]
+    ">
+                {tag}
+              </span>
             ))}
+
             {academics.classes.map((tag, index) => (
-                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+              <span key={index} className="
+      font-[500]
+      text-[11px] max-[360px]:text-[10px] sm:text-[13px] md:text-[15px]
+      px-3 max-[360px]:px-2.5 sm:px-5 md:px-7
+      py-1 sm:py-1.5
+      rounded-full
+      bg-[var(--color-bg-success)]
+    ">
+                {tag}
+              </span>
             ))}
+
             {academics.medium.map((tag, index) => (
-                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
+              <span key={index} className="
+      font-[500]
+      text-[11px] max-[360px]:text-[10px] sm:text-[13px] md:text-[15px]
+      px-3 max-[360px]:px-2.5 sm:px-5 md:px-7
+      py-1 sm:py-1.5
+      rounded-full
+      bg-[var(--color-bg-success)]
+    ">
+                {tag}
+              </span>
             ))}
-            {academics.medium.map((tag, index) => (
-                <span key={index} className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> {tag} </span>
-            ))}
-          
             {/* <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  CBSE </span>
             <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  ">  Gujarati Medium </span>
             <span className="  font-[500] text-[15px] px-7 py-1.5  rounded-4xl bg-[var(--color-bg-success)]  "> English Medium  </span>
@@ -139,27 +171,11 @@ export default async function Academics() {
         </div>
 
         {/* ── RIGHT — Stats grid ── */}
-        <div className="grid grid-cols-2 gap-4 lg:gap-5  ">
-          <StatCard
-            number="25+"
-            label="Years of Experience"
-          />
-
-          <StatCard
-            number="60+"
-            label="Expert Teachers"
-
-          />
-          <StatCard
-            number="1200+"
-            label="Students Enrolled"
-
-          />
-          <StatCard
-            number="100%"
-            label="Board Pass Rate"
-
-          />
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:gap-5">
+          <StatCard number="25+" label="Years of Experience" />
+          <StatCard number="60+" label="Expert Teachers" />
+          <StatCard number="1200+" label="Students Enrolled" />
+          <StatCard number="100%" label="Board Pass Rate" />
         </div>
 
       </div>

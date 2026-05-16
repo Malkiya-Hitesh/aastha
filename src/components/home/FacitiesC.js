@@ -13,7 +13,7 @@ const facilitie = await getFacilities()
     <H2 className='text-center '  color="brand">Facilities</H2>
 
 <div>
-    <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10  overflow-hidden'>
+    <div className='grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:gap-10  overflow-hidden'>
         {facilitie.map((facility) => (
             <div key={facility._id} className='flex flex-col items-start gap-3  pl-4 pr-8 py-3 rounded-lg bg-blue-500/10 border border-white/15 backdrop-blur-sm  '>
                 <img src={facility.imageUrl} alt={facility.alt} className='w-full h-40 object-cover border-2 rounded-md' />

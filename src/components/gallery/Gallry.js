@@ -19,7 +19,7 @@ const images = await getGalleryImages()
             <H2 className='text-center'>Gallery</H2>
 
             <div className='flex flex-col gap-8 '>
-                <div className=' flex gap-3 items-center justify-center  '>
+                <div className=' flex gap-3 items-center justify-center  flex-wrap '>
                     {categories.map((cat) => (
                         <Tag key={cat.id} variant="blue" className=' cursor-pointer '>
                             {cat.name}

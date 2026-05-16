@@ -23,8 +23,7 @@ export default function H2({
   return (
     <h2
       className={`
-        font-[var(--font-heading)] font-extrabold leading-[1.1] tracking-tight
-        text-[1.5rem] sm:text-[1.875rem] md:text-[2.25rem] lg:text-[2.75rem] xl:text-[3rem]
+        font-[var(--font-heading)] font-extrabold leading-[1.1] tracking-tight  text-[1.375rem] max-[360px]:text-[1.25rem]  sm:text-[1.75rem] md:text-[2.25rem] lg:text-[2.625rem] xl:text-[3rem]
         ${colorMap[color] ?? colorMap.default}
         ${className}
       `.trim().replace(/\s+/g, " ")}

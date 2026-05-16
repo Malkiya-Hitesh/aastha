@@ -30,7 +30,7 @@ function RequiredDoc() {
         },
         {
             id: 4,
-            title: "Required Document 4",
+            title: "Required Documenquired Documenquired Document 4",
             description: "This is the fourth required document.",
             src: "pdf-link-4.pdf",
             date: "2024-06-01"
@@ -57,7 +57,7 @@ function RequiredDoc() {
             src: "pdf-link-7.pdf",
             date: "2024-06-01"
         },
-    {
+        {
             id: 8,
             title: "Required Document 8",
             description: "This is the eighth required document.",
@@ -75,25 +75,34 @@ function RequiredDoc() {
 
             <div className='grid  grid-cols-1 md:grid-cols-2  gap-5 lg:gap-10  overflow-hidden'>
                 {requiredDocs.map((doc) => (
-                    <div key={doc.id} className=' grid grid-cols-[auto_1fr] gap-3  items-center  pl-4 pr-8 py-3 rounded-full bg-blue-500/10 border border-white/15 backdrop-blur-sm  '>
-                        <div className=' bg-[var(--color-bg-danger)]  rounded-full w-13 h-13 flex items-center justify-center'>
-                            <FaFilePdf  className=' text-3xl text-[var(--color-text-danger)] ' />
+                    <div
+                        key={doc.id}
+                        className='
+    flex items-center gap-2 sm:gap-3
+    pl-3 sm:pl-4 pr-4 sm:pr-6
+    py-2 sm:py-3
+    rounded-full
+    bg-blue-500/10
+    border border-white/15
+    backdrop-blur-sm
+  '
+                    >
+                        {/* PDF Icon */}
+                        <div className='
+    shrink-0
+    bg-[var(--color-bg-danger)]
+    rounded-full
+    w-10 h-10 sm:w-12 sm:h-12
+    flex items-center justify-center
+  '>
+                            <FaFilePdf className='text-lg sm:text-2xl text-[var(--color-text-danger)]' />
                         </div>
 
-
-
-                        <div className='flex flex-col items-start gap-1'>
-                            <div className=' '>
-                                <P className='line-clamp-1' size="xl" style={{ fontWeight: 'bold' }}>{doc.title}</P>
-
-                                
-                            </div>
-
-                            <P className='line-clamp-1' color="muted" size="md">{doc.description}</P>
-                        </div>
-
-
-
+                        {/* Title */}
+                        <P >
+                            {doc.title}
+                            </P>
+                       
                     </div>
                 ))}
             </div>

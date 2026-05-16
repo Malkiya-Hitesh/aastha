@@ -23,7 +23,7 @@ export default function H3({
     <h3
       className={`
         font-[var(--font-heading)] font-bold leading-[1.2] tracking-tight
-        text-[1.125rem] sm:text-[1.25rem] md:text-[1.375rem] lg:text-[1.5rem]
+        text-[1.125rem]  max-[360px]:text-[1rem]  sm:text-[1.25rem] md:text-[1.375rem] lg:text-[1.5rem]
         ${colorMap[color] ?? colorMap.default}
         ${className}
       `.trim().replace(/\s+/g, " ")}

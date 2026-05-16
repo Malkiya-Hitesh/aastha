@@ -1,5 +1,7 @@
 import Academics from '@/components/academic/Academics'
 import Achivment from '@/components/academic/Achivment'
+import AdmissionForm from '@/components/academic/AdmissionFormSection'
+
 import Aprocess from '@/components/academic/Aprocess'
 import Hero from '@/components/academic/Hero'
 import RequiredDoc from '@/components/academic/RequiredDoc'
@@ -11,10 +13,11 @@ function page() {
     <main>
       <Hero />
       <Academics />
-      <Achivment />
+      {/* <Achivment />
       <Teacher />
       <RequiredDoc />
-      <Aprocess />
+      <Aprocess /> */}
+<AdmissionForm />
     </main>
   )
 }

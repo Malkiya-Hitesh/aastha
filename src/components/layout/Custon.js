@@ -1,6 +1,9 @@
 "use client";
 
-import { FaWhatsapp } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+
+// ── Fixed design width (desktop reference) ──────────────────────────────────
+const DESIGN_WIDTH = 768;
 
 const schools = [
   {
@@ -12,8 +15,8 @@ const schools = [
     whatsapp: true,
     accent: "#e53e3e",
     border: "#e53e3e",
-    logo: null,
     type: "text",
+    link: "https://www.aekschool.com/",
   },
   {
     id: 2,
@@ -24,10 +27,8 @@ const schools = [
     whatsapp: true,
     accent: "#00aaff",
     border: "#00aaff",
-    logo: "JPS",
     type: "logo",
-    logoColors: ["#e53e3e", "#22c55e", "#6366f1"],
-    logoSub: ["JASDAN", "PUBLIC", "SCHOOL"],
+    link: "https://www.jasdanpublicschool.com/",
   },
   {
     id: 3,
@@ -38,16 +39,9 @@ const schools = [
     whatsapp: false,
     accent: "#1a56db",
     border: "#1a56db",
-    logo: null,
     type: "text",
+    link: "https://www.yashodagirlsschool.com/",
   },
-];
-
-const contactNumbers = [
-  "99252 00182",
-  "98242 21798",
-  "98259 74040",
-  "99245 30733",
 ];
 
 function JPSLogo() {
@@ -57,29 +51,43 @@ function JPSLogo() {
     { char: "S", bg: "#4f46e5" },
   ];
   const subs = ["JASDAN", "PUBLIC", "SCHOOL"];
+
   return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="flex gap-4">
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8 }}>
+      <div style={{ display: "flex", gap: 16 }}>
         {letters.map(({ char, bg }, i) => (
           <div
             key={i}
-            className="w-10 h-14 flex items-center  justify-center rounded"
-            style={{ backgroundColor: bg }}
+            style={{
+              width: 40,
+              height: 56,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 4,
+              backgroundColor: bg,
+              flexShrink: 0,
+            }}
           >
-            <span
-              className="text-white font-black text-4xl  font-[100] "
-              style={{ fontFamily: "'Georgia', serif" }}
-            >
+            <span style={{ color: "#fff", fontWeight: 900, fontSize: 34, fontFamily: "Georgia, serif", lineHeight: 1 }}>
               {char}
             </span>
           </div>
         ))}
       </div>
-      <div className="flex gap-1 mt-0.5">
+      <div style={{ display: "flex" }}>
         {subs.map((s, i) => (
           <span
             key={i}
-            className="text-[10px] font-bold tracking-wider text-gray-700 w-14 text-center"
+            style={{
+              fontSize: 10,
+              fontWeight: 700,
+              letterSpacing: "0.06em",
+              color: "#374151",
+              width: 56,
+              textAlign: "center",
+              display: "block",
+            }}
           >
             {s}
           </span>
@@ -92,76 +100,157 @@ function JPSLogo() {
 function SchoolCard({ school }) {
   return (
     <div
-      className="flex flex-col items-center justify-between border-2 border-dashed rounded-lg p-4 flex-1 min-h-[220px] bg-white"
-      style={{ borderColor: school.border }}
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        border: `2px dashed ${school.border}`,
+        borderRadius: 10,
+        padding: "16px 12px",
+        flex: 1,
+        minHeight: 220,
+        backgroundColor: "#ffffff",
+        boxSizing: "border-box",
+        overflow: "hidden",
+      }}
     >
-      {/* Top Section */}
-      <div className="flex flex-col items-center gap-2 text-center">
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, textAlign: "center" }}>
         {school.type === "logo" ? (
           <JPSLogo />
         ) : (
           <h2
-            className="text-3xl font-[1000] leading-tight"
-            style={{ color: school.accent, fontFamily: "'Georgia', serif" }}
+            style={{
+              color: school.accent,
+              fontFamily: "Georgia, serif",
+              fontSize: 28,
+              fontWeight: 900,
+              lineHeight: 1.25,
+              margin: 0,
+            }}
           >
             {school.name}
           </h2>
         )}
 
         <p
-          className="font-semibold text-sm"
           style={{
+            fontWeight: 600,
+            fontSize: 13,
             color: school.type === "logo" ? "#00aaff" : school.accent,
+            margin: 0,
           }}
         >
           {school.medium}
         </p>
 
-        <div className="text-sm text-gray-700 font-medium leading-snug">
+        <div style={{ fontSize: 13, color: "#374151", fontWeight: 500, lineHeight: 1.5 }}>
           {school.details.map((d, i) => (
-            <p key={i}>{d}</p>
+            <p key={i} style={{ margin: 0 }}>{d}</p>
           ))}
         </div>
-      </div>
-
-      {/* Phone */}
-      <div className="flex items-center gap-1 mt-3 text-gray-800 font-bold text-sm">
-        {school.whatsapp && (
-          <FaWhatsapp className="text-green-500 text-lg shrink-0" />
+        {school.link && (
+          <a
+            href={school.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              marginTop: 16,
+              color: school.accent,
+              textDecoration: "underline",
+              fontWeight: 600,
+            }}
+          >
+            Visit Website
+          </a>
         )}
-        <span>Mo. {school.phone}</span>
       </div>
     </div>
   );
 }
 
 export default function TeamAasthaAd() {
+  const outerRef = useRef(null);
+  const innerRef = useRef(null);
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    function recalc() {
+      if (!outerRef.current) return;
+
+      const parent = outerRef.current.parentElement;
+      const available = parent
+        ? parent.getBoundingClientRect().width
+        : window.innerWidth;
+
+      const newScale = Math.min(available / DESIGN_WIDTH, 1);
+      setScale(newScale);
+
+      // Sync outer wrapper height so the page doesn't leave a gap
+      if (innerRef.current) {
+        const naturalH = innerRef.current.getBoundingClientRect().height / newScale;
+        outerRef.current.style.height = `${naturalH * newScale}px`;
+      }
+    }
+
+    recalc();
+
+    const ro = new ResizeObserver(recalc);
+    const parent = outerRef.current?.parentElement;
+    if (parent) ro.observe(parent);
+    window.addEventListener("resize", recalc);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", recalc);
+    };
+  }, []);
+
   return (
-    <div className="w-full max-w-3xl mx-auto font-sans shadow-xl overflow-hidden rounded-xl border border-gray-200">
-      {/* School Cards Row */}
-      <div className="flex gap-3 p-4 bg-white">
-        {schools.map((school) => (
-          <SchoolCard key={school.id} school={school} />
-        ))}
+    // Outer shell shrinks to scaled width, height patched by effect
+    <div
+      ref={outerRef}
+      style={{
+        width: DESIGN_WIDTH * scale,
+        marginLeft: "auto",
+        marginRight: "auto",
+        overflow: "hidden",
+      }}
+    >
+      {/* Inner canvas — always 768 px wide, scaled down visually */}
+      <div
+        ref={innerRef}
+        style={{
+          width: DESIGN_WIDTH,
+          transformOrigin: "top left",
+          transform: `scale(${scale})`,
+        }}
+      >
+        <div
+          style={{
+            width: "100%",
+            backgroundColor: "#ffffff",
+            borderRadius: 14,
+            border: "1px solid #e5e7eb",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.10)",
+            overflow: "hidden",
+            fontFamily: "sans-serif",
+          }}
+        >
+          {/* 3-card row — gridTemplateColumns locks it to exactly 3 forever */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gap: 20,
+              padding: 24,
+            }}
+          >
+            {schools.map((school) => (
+              <SchoolCard key={school.id} school={school} />
+            ))}
+          </div>
+        </div>
       </div>
-
-      {/* Contact Numbers Bar */}
-      <div className="bg-white px-4 pb-3 pt-1 text-center">
-        <p className="text-gray-900 font-extrabold text-base tracking-wide">
-          Mo.{" "}
-          {contactNumbers.map((num, i) => (
-            <span key={i}>
-              {num}
-              {i < contactNumbers.length - 1 && (
-                <span className="text-gray-400"> / </span>
-              )}
-            </span>
-          ))}
-        </p>
-      </div>
-
- 
-      
     </div>
   );
 }

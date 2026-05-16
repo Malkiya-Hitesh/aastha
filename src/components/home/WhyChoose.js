@@ -48,7 +48,7 @@ function WhyChoose() {
             </H2>
             <div>
 
-                <div className='grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5  overflow-hidden'>
+                <div className='grid  max-[536px]:grid-cols-1 grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-5  overflow-hidden'>
                     {reasons.map((reason) => (
                         <div key={reason.id} className='flex flex-col items-center  gap-3  py-10 px-4 rounded-lg  bg-blue-500/10 border border-white/15 backdrop-blur-sm      '>
                             <span style={{ background: reason.iconBg, color: reason.iconColor }} key={reason.id}   className='text-xl p-5 border border-white/15 backdrop-blur-sm rounded-2xl  '>{reason.icon}</span>

@@ -103,7 +103,7 @@ export default async function Gallery() {
 
     return (
         <Section className="flex flex-col gap-8 " >
-            <H2  className="text-center ">Gallery</H2>
+            <H2  color="brand" className="text-center ">Gallery</H2>
 
         
 

@@ -23,7 +23,7 @@ export default function H4({
     <h4
       className={`
         font-[var(--font-heading)] font-bold leading-[1.25] tracking-tight
-        text-[1rem] sm:text-[1.0625rem] md:text-[1.125rem] lg:text-[1.25rem]
+        text-[1rem] max-[360px]:text-[0.9375rem]  sm:text-[1.0625rem] md:text-[1.125rem] lg:text-[1.25rem]
         ${colorMap[color] ?? colorMap.default}
         ${className}
       `.trim().replace(/\s+/g, " ")}

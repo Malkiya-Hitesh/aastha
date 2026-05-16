@@ -43,9 +43,9 @@ const variants = {
 };
 
 const sizes = {
-  sm: "text-xs px-3 py-2 tracking-wide",
-  md: "text-sm px-5 py-2.5 tracking-wide",
-  lg: "text-base px-7 py-3 tracking-wide",
+  sm: "text-[0.7rem] max-[360px]:text-[0.65rem] sm:text-xs px-3 max-[360px]:px-2.5 sm:px-3.5 py-1.5 sm:py-2 tracking-wide",
+  md: "text-xs max-[360px]:text-[0.75rem] sm:text-sm px-4 max-[360px]:px-3 sm:px-5 py-2 max-[360px]:py-1.5 sm:py-2.5 tracking-wide",
+  lg: "text-sm max-[360px]:text-[0.8125rem] sm:text-base px-5 max-[360px]:px-4 sm:px-7 py-2.5 max-[360px]:py-2 sm:py-3 tracking-wide",
 };
 
 export default function Button({

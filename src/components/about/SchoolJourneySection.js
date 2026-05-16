@@ -1,6 +1,6 @@
 
 
-import Image from 'next/image'
+
 import { H2, H4, P, Section, Tag } from '../ui'
 import { getMilestones } from '@/lib/queries'
 

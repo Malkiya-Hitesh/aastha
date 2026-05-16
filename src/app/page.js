@@ -23,7 +23,9 @@ function page() {
   return (
     <main>
     <HeroSection />
+    <TeamAasthaAd />
     <Heroaboute />
+    
     <Notis />
    <FacitiesC />
    <Academics />
@@ -34,7 +36,7 @@ function page() {
   <FaqServer />
    <CtaSection />
    <ContactSection />
-   <TeamAasthaAd />
+   
     </main>
   )
 }

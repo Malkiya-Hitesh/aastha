@@ -5,13 +5,17 @@ import { IoCall } from 'react-icons/io5'
 
 
 
-function InfoCard({ label, value, iconBg, iconColor, icon }) {
+function InfoCard({ label, value, iconBg, iconColor, icon , index}) {
     return (
-        <div className=' p-4 flex flex-col gap-4 rounded-[12px] bg-[var(--color-bg-card)] border border-[var(--color-border-muted)]'  style={{ background: iconBg, color: iconColor }} >
+        <div className={`
+          ${ index === 2
+                ? 'md:col-span-2 lg:col-span-1'
+                : ''}
+       p-4 flex flex-col gap-4 rounded-[12px] bg-[var(--color-bg-card)] border border-[var(--color-border-muted)] `} style={{ background: iconBg, color: iconColor }} >
 
             <div className="flex items-center gap-5  ">
                 <div
-                    className=" p-5  rounded-[10px] flex items-center justify-center text-2xl flex-shrink-0"
+                    className="p-2.5 sm:p-3.5 rounded-[10px] flex items-center justify-center text-lg sm:text-2xl flex-shrink-0"
                     style={{ background: iconBg, color: iconColor }}
                 >
                     {icon}
@@ -23,9 +27,9 @@ function InfoCard({ label, value, iconBg, iconColor, icon }) {
 
                 </div>
             </div>
-             <P size="lg" color="dark" >
-                    {value}
-                </P>
+            <P size="lg" color="dark" >
+                {value}
+            </P>
         </div>
     )
 }
@@ -37,7 +41,7 @@ function Valu() {
             value: 'Integrity, innovation, and customer satisfaction are at the core of everything we do. We strive to create a positive impact through our work and are committed to continuous improvement and growth.',
             iconBg: '#E8F0FC',
             iconColor: '#1061D2',
-            icon: (<FaMapMarkerAlt className='text-2xl'/>)
+            icon: (<FaMapMarkerAlt className='text-2xl' />)
 
         },
         {
@@ -46,7 +50,7 @@ function Valu() {
             value: '  Our vision is to be a leading company in our industry, known for our exceptional service and innovative solutions. We aim to empower our clients and contribute to their success through our expertise and dedication.',
             iconBg: '#f0fbe8',
             iconColor: '#4a9e1a',
-            icon: (<IoCall  className='text-2xl'/>
+            icon: (<IoCall className='text-2xl' />
 
             ),
         },
@@ -61,11 +65,11 @@ function Valu() {
         },
     ]
     return (
-        <Section  variant='white' className='flex flex-col gap-8   ' >
-            <div className='grid grid-cols-3 gap-8 justify-center'>
+        <Section variant='white' className='flex flex-col gap-8   ' >
+            <div className='grid grid-cols-1  md:grid-cols-2   lg:grid-cols-3 gap-8 justify-center'>
 
-                {val.map((item) => (
-                    <InfoCard key={item.id} {...item} />
+                {val.map((item , index) => (
+                    <InfoCard key={item.id} {...item} index={index} />
                 ))
 
                 }
