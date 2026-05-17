@@ -3,6 +3,10 @@
 import { useState } from 'react'
 import { H3, H4, P, Section, Tag, Button } from '../ui'
 
+// ── PASTE YOUR GOOGLE APPS SCRIPT URL HERE ──────────────────
+const REVIEW_SHEET_URL = 'https://script.google.com/macros/s/AKfycbzXa3bOd4Jvmj71OArCj_zxEeDGiAUo6xAeBGjny7YC4ecJsryRbbuIBMQcbNpfWFtY/exec'
+
+
 // ── Star path ─────────────────────────────────────────────────
 const STAR_PATH = "M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
 
@@ -29,12 +33,11 @@ const starLabels = {
 function Field({ label, required, error, children }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="flex items-center gap-1  tracking-wider"
+      <label className="flex items-center gap-1 tracking-wider"
         style={{ color: 'var(--color-text-muted)' }}>
-        <P size="md" color='dark' >
+        <P size="md" color='dark'>
           {label}
         </P>
-
         {required && <span style={{ color: 'var(--color-red)' }}>*</span>}
       </label>
       {children}
@@ -56,7 +59,7 @@ function Input({ value, onChange, placeholder, type = 'text', error }) {
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      className={`  w-full h-11 px-4 rounded-[9px]  transition-all duration-150  placeholder:text-[var(--color-text-hint)]  text-[var(--color-text)]  outline-none bg-[var(--color-bg-card)]  border-[var(--color-border-brand)]
+      className={`w-full h-11 px-4 rounded-[9px] transition-all duration-150 placeholder:text-[var(--color-text-hint)] text-[var(--color-text)] outline-none bg-[var(--color-bg-card)] border-[var(--color-border-brand)]
         ${error
           ? 'border-[var(--color-red)]'
           : 'border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)]'
@@ -94,8 +97,6 @@ function StarRater({ value, onChange }) {
             </svg>
           </button>
         ))}
-
-        {/* Label */}
         {active > 0 && (
           <span
             className="ml-2 font-[var(--font-body)] text-sm font-semibold transition-all duration-150"
@@ -121,6 +122,8 @@ export default function WriteReviewForm() {
   })
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const set = (field) => (e) =>
     setForm((p) => ({ ...p, [field]: e.target.value }))
@@ -141,7 +144,8 @@ export default function WriteReviewForm() {
     return e
   }
 
-  const handleSubmit = (e) => {
+  // ── Submit — posts to Google Sheet ───────────────────────────
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) {
@@ -149,9 +153,31 @@ export default function WriteReviewForm() {
       return
     }
     setErrors({})
-    // TODO: POST form data to your API here
-    console.log('Review submitted:', form)
-    setSubmitted(true)
+    setSubmitError('')
+    setLoading(true)
+
+    try {
+      await fetch(REVIEW_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors', // required for Google Apps Script
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          role: form.role,
+          rating: form.rating,
+          title: form.title,
+          content: form.content,
+        }),
+      })
+      // no-cors means we can't read the response — but data saves fine
+      setSubmitted(true)
+    } catch (err) {
+      console.error('Review submit error:', err)
+      setSubmitError('Something went wrong. Please try again.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   // ── Success state ────────────────────────────────────────────
@@ -203,7 +229,10 @@ export default function WriteReviewForm() {
           </div>
 
           <button
-            onClick={() => { setSubmitted(false); setForm({ name: '', role: '', email: '', rating: 0, title: '', content: '' }) }}
+            onClick={() => {
+              setSubmitted(false)
+              setForm({ name: '', role: '', email: '', rating: 0, title: '', content: '' })
+            }}
             className="font-[var(--font-body)] text-sm font-semibold underline"
             style={{ color: 'var(--color-text-brand)' }}
           >
@@ -218,17 +247,15 @@ export default function WriteReviewForm() {
   return (
     <Section id="write-review" variant="white" className="flex flex-col gap-8 items-center">
 
-    
-        <H3 color="default">Write a Review</H3>
-     
+      <H3 color="default">Write a Review</H3>
 
       <form
         onSubmit={handleSubmit}
         noValidate
-        className="max-w-2xl flex flex-col gap-6 w-full bg-[var(--color-bg-muted)]      p-4 sm:p-6 md:p-8  lg:p-10  rounded-3xl "
+        className="max-w-2xl flex flex-col gap-6 w-full bg-[var(--color-bg-muted)] p-4 sm:p-6 md:p-8 lg:p-10 rounded-3xl"
       >
 
-        {/* Name + Role row */}
+        {/* Name + Email row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Field label="Full Name" required error={errors.name}>
             <Input
@@ -250,7 +277,7 @@ export default function WriteReviewForm() {
           </Field>
         </div>
 
-        
+        {/* Role */}
         <Field label="You are a" required error={errors.role}>
           <div className="flex flex-wrap gap-2">
             {roles.map((r) => (
@@ -279,7 +306,7 @@ export default function WriteReviewForm() {
           )}
         </Field>
 
-        
+        {/* Rating */}
         <Field label="Your Rating" required error={errors.rating}>
           <StarRater
             value={form.rating}
@@ -293,8 +320,15 @@ export default function WriteReviewForm() {
           )}
         </Field>
 
-       
-        
+        {/* Review Title */}
+        <Field label="Review Title" required error={errors.title}>
+          <Input
+            value={form.title}
+            onChange={set('title')}
+            placeholder="Summarise your experience in one line"
+            error={errors.title}
+          />
+        </Field>
 
         {/* Review content */}
         <Field label="Your Review" required error={errors.content}>
@@ -304,21 +338,18 @@ export default function WriteReviewForm() {
               value={form.content}
               onChange={set('content')}
               placeholder="Share your experience at AEK School — what did you like most? How has it helped you or your child?"
-              className={`  w-full px-4 py-3 rounded-[9px] resize-none
-               ] text-sm
-                bg-[var(--color-bg-card)]  border-2  border-[#1061d2]
+              className={`w-full px-4 py-3 rounded-[9px] resize-none text-sm
+                bg-[var(--color-bg-card)] border-2
                 transition-all duration-150
                 placeholder:text-[var(--color-text-hint)]
                 text-[var(--color-text)]
                 outline-none focus:bg-[var(--color-bg-card)]
-              
                 ${errors.content
                   ? 'border-[var(--color-red)]'
                   : 'border-[var(--color-border-muted)] hover:border-[var(--color-border-brand)]'
                 }
               `}
             />
-            {/* Char count */}
             <span
               className="absolute bottom-3 right-4 font-[var(--font-body)] text-xs"
               style={{ color: form.content.length < 20 ? 'var(--color-red)' : 'var(--color-text-hint)' }}
@@ -328,23 +359,32 @@ export default function WriteReviewForm() {
           </div>
         </Field>
 
-
         <P size="xs" color="default" className="!opacity-40">
           Your email will not be published. Reviews are moderated before going live.
         </P>
 
-   
+        {/* Network error */}
+        {submitError && (
+          <p className="font-[var(--font-body)] text-sm font-medium text-center"
+            style={{ color: 'var(--color-red)' }}>
+            {submitError}
+          </p>
+        )}
+
+        {/* Submit button */}
         <button
           type="submit"
+          disabled={loading}
           className="
             w-full sm:w-fit px-8 h-12 rounded-[9px]
             font-[var(--font-body)] font-semibold text-sm text-white
             bg-[var(--color-bg-brand)] hover:opacity-90
             transition-opacity duration-150
             focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] focus:ring-offset-2
+            disabled:opacity-60 disabled:cursor-not-allowed
           "
         >
-          Submit Review →
+          {loading ? 'Submitting…' : 'Submit Review →'}
         </button>
 
       </form>

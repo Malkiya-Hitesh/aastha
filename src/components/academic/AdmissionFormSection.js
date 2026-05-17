@@ -6,6 +6,9 @@ import { H2, H3, P, Section } from '../ui'
 // ─────────────────────────────────────────────
 // 15 Dummy Rules & Terms
 // ─────────────────────────────────────────────
+
+
+ const ADMISSION_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxffEsiOGUOP51-Oq8cAv6_S0jRog1DIvJqcF6EjXP6L7cffVVPI7dSvp82uO-w2W3r/exec'
 const RULES = [
   { n: 1,  gu: 'વિદ્યાર્થીએ દરરોજ સ્વચ્છ ગણવેશ પહેરીને શાળાએ આવવું ફરજિયાત છે.',            en: 'Students must wear clean uniform to school every day without fail.' },
   { n: 2,  gu: 'શાળા સમય દરમ્યાન મોબાઈલ ફોનનો ઉપયોગ સંપૂર્ણ પ્રતિબંધિત છે.',                en: 'Use of mobile phones is strictly prohibited during school hours.' },
@@ -477,6 +480,23 @@ function PrintView({ data, photo, onBack }) {
     win.document.close()
   }
 
+  const submitAndPrint = async() => {
+      
+    try {
+    await fetch(ADMISSION_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+
+      handlePrint()
+    
+  } catch (err) {
+    console.error('Submit error:', err)
+  }
+  }
+
   return (
     <Section variant="default" className="flex flex-col gap-6">
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -492,7 +512,7 @@ function PrintView({ data, photo, onBack }) {
             style={{ borderColor: 'var(--color-border-brand)', color: 'var(--color-text-brand)' }}>
             ← Edit
           </button>
-          <button onClick={handlePrint}
+          <button onClick={submitAndPrint}
             className="px-6 h-10 rounded-[8px] font-[var(--font-body)] text-sm font-semibold text-white flex items-center gap-2"
             style={{ background: 'var(--color-bg-brand)' }}>
             <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
@@ -545,6 +565,8 @@ export default function AdmissionForm() {
   const [data, setData]           = useState(INIT)
   const [errors, setErrors]       = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [loding, setLoding]       = useState(false)
+
   const [photo, setPhoto]         = useState(null)
   const [showRules, setShowRules] = useState(false)
   const containerRef              = useRef(null)
@@ -564,24 +586,32 @@ export default function AdmissionForm() {
     reader.readAsDataURL(file)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    setLoding(true)
+    
+   
     const errs = validate(data)
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
+       setLoding(false)
       setTimeout(() => {
         const first = document.querySelector('[data-error="true"]')
         first?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }, 50)
       return
     }
-    setErrors({})
-    setSubmitted(true)
-    // Scroll to top of THIS component only — no full page jump
-    setTimeout(scrollToTop, 50)
+
+  
+
+  setSubmitted(true)
+  setLoding(false)
+  setTimeout(scrollToTop, 50)
   }
 
   const handleBack = () => {
+    setLoding(false)
     setSubmitted(false)
     setTimeout(scrollToTop, 50)
   }
@@ -959,19 +989,26 @@ export default function AdmissionForm() {
 
         {/* Submit */}
         <div className="flex flex-col sm:flex-row gap-3 items-start">
-          <button type="submit"
+          <button   disabled={loding} type="submit"
             className="w-full sm:w-auto px-8 h-12 rounded-[9px] font-[var(--font-body)] font-semibold text-sm text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
             style={{ background: 'var(--color-bg-brand)' }}>
-            Submit &amp; Preview Form →
+   
+          {loding ? (
+            <>
+              <svg className="animate-spin" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                <path fillRule="evenodd" clipRule="evenodd" d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2ZM10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 13.3137 13.3137 16 10 16Z" fill="currentColor"/>
+                <path fillRule="evenodd" clipRule="evenodd" d="M9 1C8.44772 1 8 1.44772 8 2V4C8 4.55228 8.44772 5 9 5C9.55228 5 10 4.55228 10 4V2C10 1.44772 9.55228 1 9 1Z" fill="currentColor"/>
+              </svg>
+              Submitting...
+            </>
+          ) : '  Submit & Preview Form →'}
           </button>
-          <P size="xs" color="default" className="!opacity-40 self-center">
-            You can review and print after submitting.
-          </P>
+         
         </div>
 
       </form>
 
-      {/* Rules Modal */}
+      
       {showRules && <RulesModal onClose={() => setShowRules(false)} />}
     </Section>
   )

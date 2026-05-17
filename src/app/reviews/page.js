@@ -1,11 +1,12 @@
-import OverAll from '@/components/reviews/OverAll'
+
+import OverAllServer from '@/components/reviews/OverAllServer'
 import WriteReviewForm from '@/components/reviews/WriteReviewForm'
 import React from 'react'
 
 function page() {
   return (
     <div>
-      <OverAll />
+<OverAllServer />
        <WriteReviewForm />
     </div>
   )
