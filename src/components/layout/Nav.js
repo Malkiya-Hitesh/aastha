@@ -51,7 +51,7 @@ export default function Navbar() {
         <div className=" ">
 
 
-          <img src='https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/logo.png' alt='hsie' className="h-[4rem] sm:h-[4.25rem] md:h-[4.75rem] lg:h-[5rem] xl:h-[5.5rem]  sm:h- border-2 rounded-md  " />
+          <img src='https://cdn.jsdelivr.net/gh/Malkiya-Hitesh/Aastha-image@main/image/logo.png' alt='hsie' className="h-[4.5rem] sm:h-[4.55rem] md:h-[5.25rem] lg:h-[5.5rem] xl:h-[6rem]   " />
 
 
         </div>

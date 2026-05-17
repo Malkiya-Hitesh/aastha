@@ -4,6 +4,7 @@ import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoCall } from 'react-icons/io5'
 import { IoIosMail } from 'react-icons/io'
 import { getContactInfo } from '@/lib/queries'
+import ContactForm from '../contact/ContactForm'
 
 // ── Contact info data   ─────────────────────────────────────────
 
@@ -136,86 +137,11 @@ export default async function ContactSection() {
         </div>
 
 
-        <div
-          className="rounded-[16px] p-6 flex flex-col gap-5"
-          style={{ background: 'var(--color-bg-dark)' }}
-        >
-          {/* Form header */}
-          <div className="flex flex-col gap-1">
-            <H3 color="inverse">Send us a Message</H3>
-            <P size="sm" color="inverse">
-              We'll get back to you within 24 hours.
-            </P>
-          </div>
+    
+          
 
-          {/* {sent ? (
-         
-            <div className="flex flex-col items-center justify-center gap-4 py-10">
-              <div
-                className="w-14 h-14 rounded-full flex items-center justify-center"
-                style={{ background: 'rgba(152,235,107,0.15)' }}
-              >
-                <svg width="24" height="24" viewBox="0 0 20 20" fill="#98EB6B">
-                  <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <H4 color="inverse">Message Sent!</H4>
-              <P size="sm" color="inverse">
-                Thank you for reaching out. Our team will contact you soon.
-              </P>
-              <button
-                onClick={() => { setSent(false); setForm({ name: '', phone: '', email: '', message: '' }) }}
-                className="font-[var(--font-body)] text-xs font-semibold underline"
-                style={{ color: 'rgba(255,255,255,0.45)' }}
-              >
-                Send another message
-              </button>
-            </div>
-          ) : (
-           
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-   
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <FormField
-                  label="Full Name"
-                  placeholder="Your name"
-                  value={form.name}
-                  onChange={set('name')}
-                />
-                <FormField
-                  label="Phone"
-                  type="tel"
-                  placeholder="+91 XXXXX XXXXX"
-                  value={form.phone}
-                  onChange={set('phone')}
-                />
-              </div>
-
-              <FormField
-                label="Email"
-                type="email"
-                placeholder="you@example.com"
-                value={form.email}
-                onChange={set('email')}
-              />
-
-              <FormField
-                label="Message"
-                placeholder="Any questions about admissions, timings, or facilities..."
-                value={form.message}
-                onChange={set('message')}
-                rows={4}
-              />
-
-      
-              <button
-                type="submit"
-                className="  w-full h-12 rounded-[9px] mt-1 font-[var(--font-body)] font-semibold text-sm text-white   bg-[var(--color-blue)] hover:opacity-90   transition-opacity duration-150  focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)] focus:ring-offset-2 "  >
-                Send Message →
-              </button>
-            </form>
-          )} */}
-        </div>
+         <ContactForm />
+       
 
       </div>
     </Section>
