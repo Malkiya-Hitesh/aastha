@@ -3,22 +3,21 @@ import { Tag } from '../ui'
 
 // ── Footer data ───────────────────────────────────────────────
 const quickLinks = [
-  { label: 'Home',       href: '/'          },
-  { label: 'About Us',   href: '/about'      },
-  { label: 'Academics',  href: '/academics'  },
-  { label: 'Admissions', href: '/admissions' },
-  { label: 'Faculty',    href: '/faculty'    },
-  { label: 'Gallery',    href: '/gallery'    },
-  { label: 'Reviews',    href: '/reviews'    },
-  { label: 'Contact',    href: '/contact'    },
+   { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Academics', href: '/academic' },
+  { label: 'Result', href: '/result' },
+  { label: 'Gallery', href: '/gallerys' },
+  { label: 'Reviews', href: '/reviews' },
+  { label: 'Contact', href: '/contact' },
 ]
 
 const academics = [
-  { label: 'LKG & HKG',               href: '/academics#lkg'       },
-  { label: 'Std 1 – 10 (GSEB & CBSE)', href: '/academics#primary'   },
-  { label: 'Std 11–12 Science',        href: '/academics#science'   },
-  { label: 'Std 11–12 Commerce',       href: '/academics#commerce'  },
-  { label: 'Std 11–12 Arts',           href: '/academics#arts'      },
+  { label: 'LKG & HKG',               href: '/academic'       },
+  { label: 'Std 1 – 10 (GSEB & CBSE)', href: '/academic'   },
+  { label: 'Std 11–12 Science',        href: '/academic'   },
+  { label: 'Std 11–12 Commerce',       href: '/academic'  },
+  { label: 'Std 11–12 Arts',           href: '/academic '      },
 ]
 
 const phones = [
