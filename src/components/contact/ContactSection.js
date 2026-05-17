@@ -1,5 +1,5 @@
 
-import { H2, Section } from '../ui'
+import { H2, P, Section } from '../ui'
 import { FaClock, FaMapMarkerAlt } from 'react-icons/fa'
 import { IoCall } from 'react-icons/io5'
 import { IoIosMail } from 'react-icons/io'
@@ -20,12 +20,12 @@ function InfoCard({ icon, iconBg, iconColor, label, value }) {
         {icon}
       </div>
       <div className="flex flex-col gap-0.5 min-w-0">
-        <p className="font-[var(--font-body)] text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase tracking-wider text-[var(--color-text-hint)]">
+        <P size="md" className="  font-semibold uppercase tracking-wider text-[var(--color-text-hint)]">
           {label}
-        </p>
-        <p className="font-[var(--font-body)] text-[0.8125rem] sm:text-sm font-medium text-[var(--color-text)] truncate">
+        </P>
+        <P size='sm' className="font-medium text-[var(--color-text)] truncate">
           {value}
-        </p>
+        </P>
       </div>
     </div>
   )
