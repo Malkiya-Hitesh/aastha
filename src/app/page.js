@@ -10,7 +10,8 @@ import Gallery from "@/components/home/Gallry";
 import Heroaboute from "@/components/home/Heroaboute";
 import HeroServer from "@/components/home/HeroServer";
 import Notis from "@/components/home/Notis";
-import Reviws from "@/components/home/Reviws";
+
+import ReviwsServer from "@/components/home/ReviwsServer";
 import WhyChoose from "@/components/home/WhyChoose";
 import TeamAasthaAd from "@/components/layout/Custon";
 
@@ -42,7 +43,7 @@ function page() {
       <WhyChoose />
       <Achivment />
       <Gallery />
-      <Reviws />
+      <ReviwsServer />
       <FaqServer />
       <CtaSection />
       <ContactSection />

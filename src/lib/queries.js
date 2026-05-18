@@ -89,3 +89,25 @@ export const getResults = () =>
       "photoUrl": photo.asset->url
     }
   }`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  export const getRules = () =>
+  sanityFetch(`*[_type == "rule"] | order(number asc) {
+    _id, number, gu, en
+  }`)

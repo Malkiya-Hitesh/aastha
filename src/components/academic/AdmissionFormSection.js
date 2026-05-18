@@ -3,36 +3,17 @@
 import { useState, useRef } from 'react'
 import { H2, H3, P, Section } from '../ui'
 
-// ─────────────────────────────────────────────
-// 15 Dummy Rules & Terms
-// ─────────────────────────────────────────────
 
 
- const ADMISSION_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxffEsiOGUOP51-Oq8cAv6_S0jRog1DIvJqcF6EjXP6L7cffVVPI7dSvp82uO-w2W3r/exec'
-const RULES = [
-  { n: 1,  gu: 'વિદ્યાર્થીએ દરરોજ સ્વચ્છ ગણવેશ પહેરીને શાળાએ આવવું ફરજિયાત છે.',            en: 'Students must wear clean uniform to school every day without fail.' },
-  { n: 2,  gu: 'શાળા સમય દરમ્યાન મોબાઈલ ફોનનો ઉપયોગ સંપૂર્ણ પ્રતિબંધિત છે.',                en: 'Use of mobile phones is strictly prohibited during school hours.' },
-  { n: 3,  gu: 'ફી ભરવાની છેલ્લી તારીખ દર મહિનાની 10 તારીખ છે, મોડી ફી પર દંડ લાગશે.',     en: 'Fee due date is the 10th of every month; late payment will attract a fine.' },
-  { n: 4,  gu: 'શાળામાં ગેરહાજર રહેવા માટે વાલીએ અગાઉથી લેખિત અરજી આપવી ફરજિયાત છે.',       en: 'Prior written application from parents is mandatory for any absence.' },
-  { n: 5,  gu: 'પ્રાર્થના સભામાં ઉપસ્થિત રહેવું દરેક વિદ્યાર્થી માટે ફરજિયાત છે.',            en: 'Attendance at morning assembly is compulsory for all students.' },
-  { n: 6,  gu: 'શાળાની મિલ્કત અથવા ફર્નિચરને નુકસાન કરનાર વિદ્યાર્થી ભરપાઈ કરવા બંધાયેલ છે.', en: 'Students causing damage to school property will be liable for compensation.' },
-  { n: 7,  gu: 'ટ્રાન્સપોર્ટેશન ફી અલગથી લેવામાં આવે છે અને તે પ્રવેશ ફીમાં સામેલ નથી.',      en: 'Transportation fee is charged separately and is not included in admission fees.' },
-  { n: 8,  gu: 'વિદ્યાર્થીએ શાળા પ્રાંગણમાં અન્ય વિદ્યાર્થીઓ સાથે આદરભાવ અને સૌજન્ય રાખવું.',  en: 'Students must maintain respect and courtesy towards fellow students on school premises.' },
-  { n: 9,  gu: 'ગૃહ કાર્ય (Homework) નિયમિત અને સ્વચ્છ રીતે પૂર્ણ કરવું ફરજિયાત છે.',        en: 'Homework must be completed regularly and neatly without exception.' },
-  { n: 10, gu: 'શાળામાં ખોવાયેલી વ્યક્તિગત વસ્તુઓ માટે શાળા જવાબદાર રહેશે નહીં.',            en: 'The school will not be responsible for any personal belongings lost on premises.' },
-  { n: 11, gu: 'પ્રત્યેક વિદ્યાર્થીએ વર્ગ શિક્ષક અને સ્ટાફ સભ્યોની સૂચનાઓ માનવી ફરજિયાત છે.',  en: 'Every student must follow instructions given by class teacher and staff members.' },
-  { n: 12, gu: 'ત્રિમાસિક, અર્ધ-વાર્ષિક અને વાર્ષિક પરીક્ષામાં ઉપસ્થિત રહેવું ફરજિયાત છે.',    en: 'Attendance in quarterly, half-yearly and annual examinations is compulsory.' },
-  { n: 13, gu: 'ઓળખ-કાર્ડ (ID Card) દરરોજ સાથે રાખવું ફરજિયાત છે; ખોવાયા પર ₹50 ફી ભરવી.',   en: 'ID Card must be carried daily; replacement fee of ₹50 applies if lost.' },
-  { n: 14, gu: 'શાળા દ્વારા આયોજિત સાંસ્કૃતિક, રમત-ગમત તેમ જ અન્ય પ્રવૃત્તિઓમાં ભાગ લેવો.',   en: 'Participation in cultural, sports and other school activities is encouraged.' },
-  { n: 15, gu: 'કોઈ પણ ફરિયાદ માટે વાલીએ ઓફિસ-અવર (9am–1pm) દરમ્યાન સંપર્ક કરવો.',           en: 'For any complaint, parents must contact during office hours (9am–1pm).' },
-]
+const ADMISSION_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxffEsiOGUOP51-Oq8cAv6_S0jRog1DIvJqcF6EjXP6L7cffVVPI7dSvp82uO-w2W3r/exec'
+
 
 // ─────────────────────────────────────────────
 // Validation helpers
 // ─────────────────────────────────────────────
 const ONLY_LETTERS = /^[a-zA-Z\s]*$/
 const ONLY_NUMBERS = /^[0-9]*$/
-const EMAIL_REGEX  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 function calcAge(dob) {
   if (!dob) return null
@@ -48,28 +29,28 @@ function validate(data) {
   const e = {}
 
   // ── Basic ──
-  if (!data.std.trim())                          e.std      = 'STD is required'
-  if (data.phR && data.phR.length !== 10)        e.phR      = 'Must be 10 digits'
-  if (data.phM && data.phM.length !== 10)        e.phM      = 'Must be 10 digits'
-  if (!data.whatsapp.trim())                     e.whatsapp = 'WhatsApp No. is required'
-  else if (data.whatsapp.length !== 10)          e.whatsapp = 'Must be 10 digits'
-  if (!data.medium)                              e.medium   = 'Please select Medium'
+  if (!data.std.trim()) e.std = 'STD is required'
+  if (data.phR && data.phR.length !== 10) e.phR = 'Must be 10 digits'
+  if (data.phM && data.phM.length !== 10) e.phM = 'Must be 10 digits'
+  if (!data.whatsapp.trim()) e.whatsapp = 'WhatsApp No. is required'
+  else if (data.whatsapp.length !== 10) e.whatsapp = 'Must be 10 digits'
+  if (!data.medium) e.medium = 'Please select Medium'
 
   // ── Student ──
-  if (!data.surname.trim())                      e.surname     = 'Surname is required'
-  else if (!ONLY_LETTERS.test(data.surname))     e.surname     = 'Letters only'
-  if (!data.studentName.trim())                  e.studentName = 'Name is required'
+  if (!data.surname.trim()) e.surname = 'Surname is required'
+  else if (!ONLY_LETTERS.test(data.surname)) e.surname = 'Letters only'
+  if (!data.studentName.trim()) e.studentName = 'Name is required'
   else if (!ONLY_LETTERS.test(data.studentName)) e.studentName = 'Letters only'
-  if (!data.fatherName.trim())                   e.fatherName  = "Father's name is required"
-  else if (!ONLY_LETTERS.test(data.fatherName))  e.fatherName  = 'Letters only'
+  if (!data.fatherName.trim()) e.fatherName = "Father's name is required"
+  else if (!ONLY_LETTERS.test(data.fatherName)) e.fatherName = 'Letters only'
   if (data.motherName && !ONLY_LETTERS.test(data.motherName)) e.motherName = 'Letters only'
-  if (data.religion   && !ONLY_LETTERS.test(data.religion))   e.religion   = 'Letters only'
+  if (data.religion && !ONLY_LETTERS.test(data.religion)) e.religion = 'Letters only'
 
   // ── DOB / age ──
   if (!data.dob) e.dob = 'Date of Birth is required'
   else {
     const age = calcAge(data.dob)
-    if (age < 3)  e.dob = 'Age must be at least 3 years'
+    if (age < 3) e.dob = 'Age must be at least 3 years'
     if (age > 20) e.dob = 'Age must be 20 years or below'
   }
 
@@ -81,11 +62,11 @@ function validate(data) {
 
   // ── Parent ──
   if (data.parentPhone && data.parentPhone.length !== 10) e.parentPhone = 'Must be 10 digits'
-  if (data.email && !EMAIL_REGEX.test(data.email))        e.email       = 'Invalid email format'
-  if (!data.income.trim())                                e.income      = 'Monthly income is required'
+  if (data.email && !EMAIL_REGEX.test(data.email)) e.email = 'Invalid email format'
+  if (!data.income.trim()) e.income = 'Monthly income is required'
 
   // ── Misc ──
-  if (!data.transport)    e.transport    = 'Please select Yes or No'
+  if (!data.transport) e.transport = 'Please select Yes or No'
   if (!data.acceptedRules) e.acceptedRules = 'Please read and accept all rules & terms'
 
   return e
@@ -153,10 +134,10 @@ function Input({ value, onChange, placeholder, type = 'text', error, maxLength,
   onlyLetters, onlyNumbers, uppercase, className = '' }) {
   const handleChange = (e) => {
     let v = e.target.value
-    if (uppercase)   v = v.toUpperCase()
+    if (uppercase) v = v.toUpperCase()
     if (onlyLetters) v = v.replace(/[^a-zA-Z\s]/g, '')
     if (onlyNumbers) v = v.replace(/[^0-9]/g, '')
-    if (maxLength)   v = v.slice(0, maxLength)
+    if (maxLength) v = v.slice(0, maxLength)
     onChange({ target: { value: v } })
   }
   return (
@@ -239,7 +220,7 @@ function FormSection({ title, children }) {
 // ─────────────────────────────────────────────
 // Rules Modal Overlay
 // ─────────────────────────────────────────────
-function RulesModal({ onClose }) {
+function RulesModal({ onClose, RULES }) {
   return (
     <div
       onClick={onClose}
@@ -269,7 +250,7 @@ function RulesModal({ onClose }) {
               નિયમો અને શરતો / Rules &amp; Terms
             </p>
             <p style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', margin: '2px 0 0 0' }}>
-              Shree Aastha Shaikshanik Sankul
+              Shree Aastha school jasdan
             </p>
           </div>
           <button onClick={onClose} style={{
@@ -278,7 +259,7 @@ function RulesModal({ onClose }) {
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
             <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"/>
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </button>
         </div>
@@ -326,8 +307,11 @@ function RulesModal({ onClose }) {
 
 // ─────────────────────────────────────────────
 // Print view
+
 // ─────────────────────────────────────────────
-function PrintView({ data, photo, onBack }) {
+function PrintView({ data, photo, onBack, RULES , complet }) {
+  const [loding, setLoding] = useState(false)
+
   const handlePrint = () => {
     const win = window.open('', '_blank')
     win.document.write(`<!DOCTYPE html><html><head>
@@ -362,7 +346,7 @@ function PrintView({ data, photo, onBack }) {
     </head><body><div class="wrap">
       <div class="header">
         <div>
-          <div class="school-name">Shree Aastha Shaikshanik Sankul</div>
+          <div class="school-name">Shree Aastha school jasdan</div>
           <div class="school-sub">Jasdan Public School · Yashoda Girls School</div>
           <div class="school-sub">Chitaliya Road, Jasdan | Mo. 95120 28511 / 93130 24124 / 97371 87102</div>
         </div>
@@ -392,7 +376,7 @@ function PrintView({ data, photo, onBack }) {
         <div>
           <div class="fl" style="margin-bottom:4px">Category</div>
           <div class="cbrow">
-            ${['SC','ST','OBC','OPEN'].map(c=>`<div class="cbi"><div class="cb">${data.category===c?'✓':''}</div>${c}</div>`).join('')}
+            ${['SC', 'ST', 'OBC', 'OPEN'].map(c => `<div class="cbi"><div class="cb">${data.category === c ? '✓' : ''}</div>${c}</div>`).join('')}
           </div>
         </div>
       </div>
@@ -434,8 +418,8 @@ function PrintView({ data, photo, onBack }) {
 
       <div class="trow">
         <span style="font-weight:700">Join Transportation Facility:</span>
-        <div class="cbi"><div class="cb">${data.transport==='Yes'?'✓':''}</div>Yes</div>
-        <div class="cbi"><div class="cb">${data.transport==='No'?'✓':''}</div>No</div>
+        <div class="cbi"><div class="cb">${data.transport === 'Yes' ? '✓' : ''}</div>Yes</div>
+        <div class="cbi"><div class="cb">${data.transport === 'No' ? '✓' : ''}</div>No</div>
       </div>
 
       <div style="margin-top:10px;padding:6px 8px;border:1px solid #1061D2;border-radius:4px;font-size:10px;color:#1061D2;font-weight:600;">
@@ -453,7 +437,7 @@ function PrintView({ data, photo, onBack }) {
     <div class="wrap" style="margin-top:0;page-break-before:always;">
       <div class="header" style="margin-bottom:10px">
         <div>
-          <div class="school-name">Shree Aastha Shaikshanik Sankul</div>
+          <div class="school-name">Shree Aastha school jasdan</div>
           <div class="school-sub">Jasdan Public School · Yashoda Girls School</div>
           <div class="school-sub">Chitaliya Road, Jasdan | Mo. 95120 28511 / 93130 24124 / 97371 87102</div>
         </div>
@@ -480,21 +464,23 @@ function PrintView({ data, photo, onBack }) {
     win.document.close()
   }
 
-  const submitAndPrint = async() => {
-      
+  const submitAndPrint = async () => {
+    setLoding(true)
     try {
-    await fetch(ADMISSION_SHEET_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    })
+      await fetch(ADMISSION_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
 
       handlePrint()
-    
-  } catch (err) {
-    console.error('Submit error:', err)
-  }
+      complet()
+    } catch (err) {
+      console.error('Submit error:', err)
+    } finally {
+      setLoding(false)
+    }
   }
 
   return (
@@ -513,12 +499,24 @@ function PrintView({ data, photo, onBack }) {
             ← Edit
           </button>
           <button onClick={submitAndPrint}
+            disabled={loding}
             className="px-6 h-10 rounded-[8px] font-[var(--font-body)] text-sm font-semibold text-white flex items-center gap-2"
             style={{ background: 'var(--color-bg-brand)' }}>
-            <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v5a2 2 0 002 2h1v2a1 1 0 001 1h8a1 1 0 001-1v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a1 1 0 00-1-1H6a1 1 0 00-1 1zm2 0h6v3H7V4zm-1 9H5v-2h1v2zm2 0v2h4v-2H8zm6 0h1v-2h-1v2z" clipRule="evenodd" />
-            </svg>
-            Print Form
+            {loding ? (<>
+              <svg className="animate-spin" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                <path fillRule="evenodd" clipRule="evenodd" d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2ZM10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 13.3137 13.3137 16 10 16Z" fill="currentColor" />
+                <path fillRule="evenodd" clipRule="evenodd" d="M9 1C8.44772 1 8 1.44772 8 2V4C8 4.55228 8.44772 5 9 5C9.55228 5 10 4.55228 10 4V2C10 1.44772 9.55228 1 9 1Z" fill="currentColor" />
+              </svg>
+              Submitting...
+            </>
+            ) : (<>
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v5a2 2 0 002 2h1v2a1 1 0 001 1h8a1 1 0 001-1v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a1 1 0 00-1-1H6a1 1 0 00-1 1zm2 0h6v3H7V4zm-1 9H5v-2h1v2zm2 0v2h4v-2H8zm6 0h1v-2h-1v2z" clipRule="evenodd" />
+              </svg>
+              Print Form
+            </>
+            )
+            }
           </button>
         </div>
       </div>
@@ -526,16 +524,16 @@ function PrintView({ data, photo, onBack }) {
       {/* FIX 2: Medium added to summary cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {[
-          ['Student',     `${data.surname} ${data.studentName}`],
-          ['STD',         data.std],
-          ['Medium',      data.medium],
-          ['Father',      data.fatherName],
-          ['Mother',      data.motherName],
-          ['DOB',         data.dob ? new Date(data.dob).toLocaleDateString('en-IN') : ''],
-          ['WhatsApp',    data.whatsapp],
-          ['Category',    data.category],
+          ['Student', `${data.surname} ${data.studentName}`],
+          ['STD', data.std],
+          ['Medium', data.medium],
+          ['Father', data.fatherName],
+          ['Mother', data.motherName],
+          ['DOB', data.dob ? new Date(data.dob).toLocaleDateString('en-IN') : ''],
+          ['WhatsApp', data.whatsapp],
+          ['Category', data.category],
           ['Last School', data.lastSchool],
-          ['Transport',   data.transport],
+          ['Transport', data.transport],
         ].map(([label, value]) => (
           <div key={label} className="flex gap-3 p-3 rounded-[10px] bg-[var(--color-bg-card)] border border-[var(--color-border-muted)]">
             <P size="sm" color="default" className="font-semibold min-w-[90px]">{label}:</P>
@@ -561,23 +559,23 @@ const INIT = {
   transport: '', acceptedRules: false,
 }
 
-export default function AdmissionForm() {
-  const [data, setData]           = useState(INIT)
-  const [errors, setErrors]       = useState({})
+export default function AdmissionForm({ RULES = [] }) {
+  const [data, setData] = useState(INIT)
+  const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  const [loding, setLoding]       = useState(false)
+  const [loding, setLoding] = useState(false)
 
-  const [photo, setPhoto]         = useState(null)
+  const [photo, setPhoto] = useState(null)
   const [showRules, setShowRules] = useState(false)
-  const containerRef              = useRef(null)
+  const containerRef = useRef(null)
 
   const scrollToTop = () => {
     // Scroll the section container into view — no jarring page jump
     containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 
-  const set    = (f) => (e) => setData((p) => ({ ...p, [f]: e.target.value }))
-  const setVal = (f, v)     => setData((p) => ({ ...p, [f]: v }))
+  const set = (f) => (e) => setData((p) => ({ ...p, [f]: e.target.value }))
+  const setVal = (f, v) => setData((p) => ({ ...p, [f]: v }))
 
   const handlePhoto = (e) => {
     const file = e.target.files?.[0]; if (!file) return
@@ -590,12 +588,12 @@ export default function AdmissionForm() {
     e.preventDefault()
 
     setLoding(true)
-    
-   
+
+
     const errs = validate(data)
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
-       setLoding(false)
+      setLoding(false)
       setTimeout(() => {
         const first = document.querySelector('[data-error="true"]')
         first?.scrollIntoView({ behavior: 'smooth', block: 'center' })
@@ -603,11 +601,11 @@ export default function AdmissionForm() {
       return
     }
 
-  
 
-  setSubmitted(true)
-  setLoding(false)
-  setTimeout(scrollToTop, 50)
+
+    setSubmitted(true)
+    setLoding(false)
+    setTimeout(scrollToTop, 50)
   }
 
   const handleBack = () => {
@@ -616,9 +614,17 @@ export default function AdmissionForm() {
     setTimeout(scrollToTop, 50)
   }
 
+  const handleSuccess = () => {
+    setData(INIT)
+    setPhoto(null)
+    setErrors({})
+    setSubmitted(false)
+    setLoding(false)
+  }
+
   if (submitted) return (
     <div ref={containerRef}>
-      <PrintView data={data} photo={photo} onBack={handleBack} />
+      <PrintView data={data} photo={photo} onBack={handleBack} RULES={RULES} complet={handleSuccess} />
     </div>
   )
 
@@ -731,7 +737,7 @@ export default function AdmissionForm() {
           {/* Category */}
           <Field label="Category">
             <div className="flex flex-wrap gap-2">
-              {['SC','ST','OBC','OPEN'].map((cat) => (
+              {['SC', 'ST', 'OBC', 'OPEN'].map((cat) => (
                 <button key={cat} type="button"
                   onClick={() => setVal('category', data.category === cat ? '' : cat)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-[8px] border
@@ -762,11 +768,11 @@ export default function AdmissionForm() {
                 {photo
                   ? <img src={photo} alt="Student" className="w-full h-full object-cover" />
                   : <div className="flex flex-col items-center gap-1 p-2 text-center">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-text-brand)" opacity="0.4">
-                        <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" />
-                      </svg>
-                      <p className="text-[9px] leading-tight" style={{ color: 'var(--color-text-muted)' }}>Passport Size Photo</p>
-                    </div>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--color-text-brand)" opacity="0.4">
+                      <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" />
+                    </svg>
+                    <p className="text-[9px] leading-tight" style={{ color: 'var(--color-text-muted)' }}>Passport Size Photo</p>
+                  </div>
                 }
               </div>
               <div className="flex flex-col gap-2">
@@ -887,7 +893,7 @@ export default function AdmissionForm() {
         <FormSection title="Miscellaneous">
           <Field label="Join Transportation Facility" required error={errors.transport}>
             <div className="flex gap-3">
-              {['Yes','No'].map((opt) => (
+              {['Yes', 'No'].map((opt) => (
                 <button key={opt} type="button"
                   onClick={() => setVal('transport', opt)}
                   className={`px-6 py-2 rounded-[8px] border font-[var(--font-body)] text-sm font-semibold transition-all duration-150
@@ -929,7 +935,7 @@ export default function AdmissionForm() {
                   fontSize: '13px', fontWeight: 600, cursor: 'pointer'
                 }}>
                 <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd" />
                 </svg>
                 બધા નિયમો વાંચો / View All Rules
               </button>
@@ -942,13 +948,12 @@ export default function AdmissionForm() {
               style={{
                 display: 'flex', alignItems: 'flex-start', gap: '12px',
                 padding: '12px', borderRadius: '8px', cursor: 'pointer',
-                border: `1.5px solid ${
-                  data.acceptedRules
-                    ? 'var(--color-border-brand)'
-                    : errors.acceptedRules
-                      ? 'var(--color-red)'
-                      : 'var(--color-border-muted)'
-                }`,
+                border: `1.5px solid ${data.acceptedRules
+                  ? 'var(--color-border-brand)'
+                  : errors.acceptedRules
+                    ? 'var(--color-red)'
+                    : 'var(--color-border-muted)'
+                  }`,
                 background: errors.acceptedRules && !data.acceptedRules ? '#fff5f5' : 'white',
                 transition: 'border-color 0.15s'
               }}>
@@ -962,7 +967,7 @@ export default function AdmissionForm() {
               }}>
                 {data.acceptedRules && (
                   <svg width="11" height="11" viewBox="0 0 10 10" fill="none">
-                    <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 )}
               </div>
@@ -971,7 +976,7 @@ export default function AdmissionForm() {
                   હું/અમે ઉપર જણાવેલ તમામ નિયમો અને શરતો વાંચ્યા અને સ્વીકાર કરીએ છીએ.
                 </p>
                 <p style={{ fontSize: '11px', color: 'var(--color-text-muted)', margin: '2px 0 0 0', lineHeight: 1.5 }}>
-                  I/We have read and accept all the rules &amp; terms of Shree Aastha Shaikshanik Sankul.
+                  I/We have read and accept all the rules &amp; terms of Shree Aastha school jasdan.
                 </p>
               </div>
             </div>
@@ -979,7 +984,7 @@ export default function AdmissionForm() {
             {errors.acceptedRules && (
               <p style={{ fontSize: '11px', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '4px', color: 'var(--color-red)', margin: 0 }}>
                 <svg width="11" height="11" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
                 </svg>
                 {errors.acceptedRules}
               </p>
@@ -989,27 +994,27 @@ export default function AdmissionForm() {
 
         {/* Submit */}
         <div className="flex flex-col sm:flex-row gap-3 items-start">
-          <button   disabled={loding} type="submit"
+          <button disabled={loding} type="submit"
             className="w-full sm:w-auto px-8 h-12 rounded-[9px] font-[var(--font-body)] font-semibold text-sm text-white flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
             style={{ background: 'var(--color-bg-brand)' }}>
-   
-          {loding ? (
-            <>
-              <svg className="animate-spin" width="15" height="15" viewBox="0 0 20 20" fill="none">
-                <path fillRule="evenodd" clipRule="evenodd" d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2ZM10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 13.3137 13.3137 16 10 16Z" fill="currentColor"/>
-                <path fillRule="evenodd" clipRule="evenodd" d="M9 1C8.44772 1 8 1.44772 8 2V4C8 4.55228 8.44772 5 9 5C9.55228 5 10 4.55228 10 4V2C10 1.44772 9.55228 1 9 1Z" fill="currentColor"/>
-              </svg>
-              Submitting...
-            </>
-          ) : '  Submit & Preview Form →'}
+
+            {loding ? (
+              <>
+                <svg className="animate-spin" width="15" height="15" viewBox="0 0 20 20" fill="none">
+                  <path fillRule="evenodd" clipRule="evenodd" d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2ZM10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10C16 13.3137 13.3137 16 10 16Z" fill="currentColor" />
+                  <path fillRule="evenodd" clipRule="evenodd" d="M9 1C8.44772 1 8 1.44772 8 2V4C8 4.55228 8.44772 5 9 5C9.55228 5 10 4.55228 10 4V2C10 1.44772 9.55228 1 9 1Z" fill="currentColor" />
+                </svg>
+                Submitting...
+              </>
+            ) : '  Submit & Preview Form →'}
           </button>
-         
+
         </div>
 
       </form>
 
-      
-      {showRules && <RulesModal onClose={() => setShowRules(false)} />}
+
+      {showRules && <RulesModal RULES={RULES} onClose={() => setShowRules(false)} />}
     </Section>
   )
 }

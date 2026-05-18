@@ -143,21 +143,10 @@ function ReviewCard({ name, role, content, rating }) {
 }
 
 // ── Reviews Data ──────────────────────────────────────────────
-const reviews = [
-    { id: 1, name: "Aarav Patel", role: "Student", rating: 5, content: "The teachers are always ready to help and make learning enjoyable. AEK School has truly shaped my confidence." },
-    { id: 2, name: "Meera Shah", role: "Parent", rating: 5, content: "My daughter has grown so much here. The faculty is caring and the school keeps parents well informed at every step." },
-    { id: 3, name: "Riya Desai", role: "Student", rating: 4, content: "The curriculum is well-structured and I love the science labs. Extracurricular activities make school so much fun." },
-    { id: 4, name: "Kiran Mehta", role: "Alumni", rating: 5, content: "AEK School gave me the foundation I needed for engineering college. I am proud to be an alumnus of this institution." },
-    { id: 5, name: "Priya Joshi", role: "Teacher", rating: 5, content: "Teaching here is a joy. The school provides all the resources we need and truly values each teacher's contribution." },
-    { id: 6, name: "Rohan Trivedi", role: "Student", rating: 4, content: "The smart classrooms and modern labs make learning so interactive. I look forward to school every single day." },
-    { id: 7, name: "Sunita Verma", role: "Parent", rating: 5, content: "We switched from another school and the difference is remarkable. The attention given to each child is exceptional." },
-    { id: 8, name: "Nikhil Kapoor", role: "Alumni", rating: 3, content: "The values and discipline I learned at AEK School still guide me in my professional life every day." },
-    { id: 9, name: "Ananya Gupta", role: "Student", rating: 5, content: "I scored district topper in my boards and my teachers made it possible. Forever grateful to AEK School." },
-    { id: 10, name: "Harish Solanki", role: "Teacher", rating: 4, content: "The school culture promotes innovation in teaching. Students here are curious, motivated and a pleasure to teach." },
-]
 
 
-export default function Reviews() {
+
+export default function Reviews({reviews}) {
 
 
 

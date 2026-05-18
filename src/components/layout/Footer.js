@@ -3,13 +3,13 @@ import { Tag } from '../ui'
 
 // ── Footer data ───────────────────────────────────────────────
 const quickLinks = [
-   { label: 'Home', href: '/' },
-  { label: 'About', href: '/about' },
-  { label: 'Academics', href: '/academic' },
-  { label: 'Result', href: '/result' },
-  { label: 'Gallery', href: '/gallerys' },
-  { label: 'Reviews', href: '/reviews' },
-  { label: 'Contact', href: '/contact' },
+   { label: 'Home', href: '/' , id : 1},
+  { label: 'About', href: '/about', id : 2 },
+  { label: 'Academics', href: '/academic', id : 3 },
+  { label: 'Result', href: '/result', id : 4 },
+  { label: 'Gallery', href: '/gallerys', id : 5 },
+  { label: 'Reviews', href: '/reviews', id : 6 },
+  { label: 'Contact', href: '/contact', id : 7   },
 ]
 
 const academics = [
@@ -97,8 +97,8 @@ export default function Footer() {
         <div>
           <ColHeading>Quick Links</ColHeading>
           <div className="flex flex-col gap-2.5">
-            {quickLinks.map(({ label, href }) => (
-              <FooterLink key={href} href={href}>{label}</FooterLink>
+            {quickLinks.map(({ label, href , id }) => (
+              <FooterLink key={id} href={href}>{label}</FooterLink>
             ))}
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function Footer() {
           <ColHeading>Academics</ColHeading>
           <div className="flex flex-col gap-2.5">
             {academics.map(({ label, href }) => (
-              <FooterLink key={href} href={href}>{label}</FooterLink>
+              <FooterLink key={label} href={href}>{label}</FooterLink>
             ))}
           </div>
         </div>

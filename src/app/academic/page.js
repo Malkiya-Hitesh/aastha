@@ -1,6 +1,7 @@
 import Academics from '@/components/academic/Academics'
 import Achivment from '@/components/academic/Achivment'
-import AdmissionForm from '@/components/academic/AdmissionFormSection'
+
+import AdmissionFormServer from '@/components/academic/AdmissionFormServer'
 
 import Aprocess from '@/components/academic/Aprocess'
 import Hero from '@/components/academic/Hero'
@@ -17,7 +18,7 @@ function page() {
       <Teacher />
       <Aprocess />
       <RequiredDoc />
-      <AdmissionForm />
+      <AdmissionFormServer />
     </main>
   )
 }
