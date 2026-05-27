@@ -99,7 +99,8 @@ function JPSLogo() {
 
 function SchoolCard({ school }) {
   return (
-    <div
+      <div
+      className="school-card"
       style={{
         display: "flex",
         flexDirection: "column",
@@ -132,7 +133,7 @@ function SchoolCard({ school }) {
             {school.name}
           </h2>
         )}
-
+ 
         <p
           style={{
             fontWeight: 600,
@@ -143,12 +144,13 @@ function SchoolCard({ school }) {
         >
           {school.medium}
         </p>
-
+ 
         <div style={{ fontSize: 13, color: "#374151", fontWeight: 500, lineHeight: 1.5 }}>
           {school.details.map((d, i) => (
             <p key={i} style={{ margin: 0 }}>{d}</p>
           ))}
         </div>
+ 
         {school.link && (
           <a
             href={school.link}

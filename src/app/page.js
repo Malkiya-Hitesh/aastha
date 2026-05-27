@@ -2,6 +2,7 @@
 
 import Academics from "@/components/home/Academics";
 import Achivment from "@/components/home/Achivment";
+import Branch from "@/components/home/Branch";
 import ContactSection from "@/components/home/Contact";
 import CtaSection from "@/components/home/Cta";
 import FacitiesC from "@/components/home/FacitiesC";
@@ -35,7 +36,7 @@ function page() {
   return (
     <main>
       <HeroServer />
-      <TeamAasthaAd />
+   <Branch />
       <Heroaboute />
       <Notis />
       <FacitiesC />
